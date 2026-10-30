@@ -22,12 +22,22 @@ export function Modal({ open, onClose, title, children, actions, wide }: Props) 
   }, [open])
 
   return (
-    <dialog ref={ref} className="modal modal-bottom sm:modal-middle" onClose={onClose} aria-label={title}>
+    <dialog
+      ref={ref}
+      className="modal modal-bottom sm:modal-middle"
+      onClose={onClose}
+      aria-label={title}
+    >
       {open && (
         <div className={`modal-box ${wide ? 'sm:max-w-3xl' : ''}`}>
           <div className="mb-4 flex items-start justify-between gap-4">
             <h3 className="text-lg font-bold">{title}</h3>
-            <button type="button" className="btn btn-ghost btn-sm btn-circle" onClick={onClose} aria-label="Close">
+            <button
+              type="button"
+              className="btn btn-ghost btn-sm btn-circle"
+              onClick={onClose}
+              aria-label="Close"
+            >
               <X className="size-4" />
             </button>
           </div>
@@ -36,7 +46,9 @@ export function Modal({ open, onClose, title, children, actions, wide }: Props) 
         </div>
       )}
       <form method="dialog" className="modal-backdrop">
-        <button type="submit" aria-label="Close dialog">close</button>
+        <button type="submit" aria-label="Close dialog">
+          close
+        </button>
       </form>
     </dialog>
   )

@@ -32,7 +32,12 @@ function PaymentForm({ total, onPay }: { total: number; onPay: (p: Payment) => v
   const canPay = method === 'cash' ? change !== null && change >= 0 : reference.trim().length >= 4
 
   // Quick-cash buttons: exact, then the next common bills above the total.
-  const quick = [total, ...[pesos(100), pesos(200), pesos(500), pesos(1000)].map((bill) => Math.ceil(total / bill) * bill)]
+  const quick = [
+    total,
+    ...[pesos(100), pesos(200), pesos(500), pesos(1000)].map(
+      (bill) => Math.ceil(total / bill) * bill,
+    ),
+  ]
   const uniqueQuick = [...new Set(quick)].filter((v) => v >= total).slice(0, 4)
 
   return (
@@ -44,10 +49,22 @@ function PaymentForm({ total, onPay }: { total: number; onPay: (p: Payment) => v
       }}
     >
       <div role="tablist" className="tabs tabs-box mb-4">
-        <button type="button" role="tab" aria-selected={method === 'cash'} className={`tab flex-1 gap-2 ${method === 'cash' ? 'tab-active' : ''}`} onClick={() => setMethod('cash')}>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={method === 'cash'}
+          className={`tab flex-1 gap-2 ${method === 'cash' ? 'tab-active' : ''}`}
+          onClick={() => setMethod('cash')}
+        >
           <Banknote className="size-4" /> Cash
         </button>
-        <button type="button" role="tab" aria-selected={method === 'ewallet'} className={`tab flex-1 gap-2 ${method === 'ewallet' ? 'tab-active' : ''}`} onClick={() => setMethod('ewallet')}>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={method === 'ewallet'}
+          className={`tab flex-1 gap-2 ${method === 'ewallet' ? 'tab-active' : ''}`}
+          onClick={() => setMethod('ewallet')}
+        >
           <Wallet className="size-4" /> E-wallet
         </button>
       </div>
@@ -58,26 +75,51 @@ function PaymentForm({ total, onPay }: { total: number; onPay: (p: Payment) => v
             <legend className="fieldset-legend">Cash received</legend>
             <label className="input input-lg w-full">
               ₱
-              <input autoFocus inputMode="decimal" value={cash} onChange={(e) => setCash(e.target.value)} aria-label="Cash received in pesos" />
+              <input
+                autoFocus
+                inputMode="decimal"
+                value={cash}
+                onChange={(e) => setCash(e.target.value)}
+                aria-label="Cash received in pesos"
+              />
             </label>
           </fieldset>
           <div className="mt-2 flex flex-wrap gap-2">
             {uniqueQuick.map((v, i) => (
-              <button key={v} type="button" className="btn btn-sm" onClick={() => setCash((v / 100).toFixed(2))}>
+              <button
+                key={v}
+                type="button"
+                className="btn btn-sm"
+                onClick={() => setCash((v / 100).toFixed(2))}
+              >
                 {i === 0 ? 'Exact' : formatPHP(v)}
               </button>
             ))}
           </div>
-          <div className={`rounded-box mt-4 p-3 text-center ${change !== null && change < 0 ? 'bg-error/15' : 'bg-base-200'}`} aria-live="polite">
+          <div
+            className={`rounded-box mt-4 p-3 text-center ${change !== null && change < 0 ? 'bg-error/15' : 'bg-base-200'}`}
+            aria-live="polite"
+          >
             <span className="text-sm">{change !== null && change < 0 ? 'Short by' : 'Change'}</span>
-            <p className="text-2xl font-bold">{change === null ? '—' : formatPHP(Math.abs(change))}</p>
+            <p className="text-2xl font-bold">
+              {change === null ? '—' : formatPHP(Math.abs(change))}
+            </p>
           </div>
         </>
       ) : (
         <fieldset className="fieldset">
           <legend className="fieldset-legend">E-wallet reference number</legend>
-          <input autoFocus className="input w-full" aria-label="E-wallet reference number" value={reference} onChange={(e) => setReference(e.target.value)} placeholder="e.g. 1029384756" />
-          <p className="label">The customer’s confirmation number from their wallet app (demo: anything 4+ characters).</p>
+          <input
+            autoFocus
+            className="input w-full"
+            aria-label="E-wallet reference number"
+            value={reference}
+            onChange={(e) => setReference(e.target.value)}
+            placeholder="e.g. 1029384756"
+          />
+          <p className="label">
+            The customer’s confirmation number from their wallet app (demo: anything 4+ characters).
+          </p>
         </fieldset>
       )}
 

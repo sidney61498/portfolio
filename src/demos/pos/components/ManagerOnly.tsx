@@ -14,10 +14,14 @@ export function ManagerOnly({ action, children }: { action: Action; children: Re
           <Lock className="text-warning size-10" />
           <h2 className="card-title">Managers only</h2>
           <p className="text-base-content/70">
-            Cashiers can’t open this page. In a real store this is enforced on the server; here the same rule is enforced in the
-            service layer too, not just by hiding the menu.
+            Cashiers can’t open this page. In a real store this is enforced on the server; here the
+            same rule is enforced in the service layer too, not just by hiding the menu.
           </p>
-          <button type="button" className="btn btn-primary mt-2" onClick={() => posService.setRole('manager')}>
+          <button
+            type="button"
+            className="btn btn-primary mt-2"
+            onClick={() => posService.setRole('manager')}
+          >
             Switch to Manager
           </button>
         </div>

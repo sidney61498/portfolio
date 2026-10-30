@@ -34,8 +34,22 @@ function NamedListPage({ title, noun, items, usage, withContact, save, remove }:
     <div className="mx-auto max-w-3xl">
       <PageHeader
         title={title}
-        subtitle={editable ? `A ${noun} that products still use can't be deleted.` : 'Read-only for cashiers.'}
-        actions={editable && <button type="button" className="btn btn-primary btn-sm" onClick={() => setEditing('new')}><Plus className="size-4" /> Add {noun}</button>}
+        subtitle={
+          editable
+            ? `A ${noun} that products still use can't be deleted.`
+            : 'Read-only for cashiers.'
+        }
+        actions={
+          editable && (
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => setEditing('new')}
+            >
+              <Plus className="size-4" /> Add {noun}
+            </button>
+          )
+        }
       />
       <div className="card bg-base-100 border-base-300 border">
         <ul className="divide-base-300 divide-y">
@@ -50,8 +64,22 @@ function NamedListPage({ title, noun, items, usage, withContact, save, remove }:
               </div>
               {editable && (
                 <div className="flex">
-                  <button type="button" className="btn btn-ghost btn-xs" onClick={() => setEditing(item)} aria-label={`Edit ${item.name}`}><Pencil className="size-4" /></button>
-                  <button type="button" className="btn btn-ghost btn-xs" onClick={() => setConfirming(item)} aria-label={`Delete ${item.name}`}><Trash2 className="size-4" /></button>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs"
+                    onClick={() => setEditing(item)}
+                    aria-label={`Edit ${item.name}`}
+                  >
+                    <Pencil className="size-4" />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-ghost btn-xs"
+                    onClick={() => setConfirming(item)}
+                    aria-label={`Delete ${item.name}`}
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
                 </div>
               )}
             </li>
@@ -59,14 +87,23 @@ function NamedListPage({ title, noun, items, usage, withContact, save, remove }:
         </ul>
       </div>
 
-      <Modal open={!!editing} onClose={() => setEditing(null)} title={editing === 'new' ? `Add ${noun}` : `Edit ${noun}`}>
+      <Modal
+        open={!!editing}
+        onClose={() => setEditing(null)}
+        title={editing === 'new' ? `Add ${noun}` : `Edit ${noun}`}
+      >
         {editing && (
           <form
             onSubmit={async (e) => {
               e.preventDefault()
               const f = new FormData(e.currentTarget)
               const ok = await attempt(
-                () => save({ id: editing === 'new' ? undefined : editing.id, name: String(f.get('name')), contact: withContact ? String(f.get('contact') ?? '') : undefined }).then(() => true),
+                () =>
+                  save({
+                    id: editing === 'new' ? undefined : editing.id,
+                    name: String(f.get('name')),
+                    contact: withContact ? String(f.get('contact') ?? '') : undefined,
+                  }).then(() => true),
                 'Saved.',
               )
               if (ok) setEditing(null)
@@ -74,17 +111,32 @@ function NamedListPage({ title, noun, items, usage, withContact, save, remove }:
           >
             <label className="fieldset">
               <span className="fieldset-legend">Name</span>
-              <input name="name" className="input w-full" defaultValue={editing === 'new' ? '' : editing.name} required minLength={2} autoFocus />
+              <input
+                name="name"
+                className="input w-full"
+                defaultValue={editing === 'new' ? '' : editing.name}
+                required
+                minLength={2}
+                autoFocus
+              />
             </label>
             {withContact && (
               <label className="fieldset">
                 <span className="fieldset-legend">Contact (optional)</span>
-                <input name="contact" className="input w-full" defaultValue={editing === 'new' ? '' : editing.contact ?? ''} />
+                <input
+                  name="contact"
+                  className="input w-full"
+                  defaultValue={editing === 'new' ? '' : (editing.contact ?? '')}
+                />
               </label>
             )}
             <div className="modal-action">
-              <button type="button" className="btn" onClick={() => setEditing(null)}>Cancel</button>
-              <button type="submit" className="btn btn-primary">Save</button>
+              <button type="button" className="btn" onClick={() => setEditing(null)}>
+                Cancel
+              </button>
+              <button type="submit" className="btn btn-primary">
+                Save
+              </button>
             </div>
           </form>
         )}
@@ -96,7 +148,9 @@ function NamedListPage({ title, noun, items, usage, withContact, save, remove }:
         title={`Delete ${confirming?.name ?? ''}?`}
         actions={
           <>
-            <button type="button" className="btn" onClick={() => setConfirming(null)}>Cancel</button>
+            <button type="button" className="btn" onClick={() => setConfirming(null)}>
+              Cancel
+            </button>
             <button
               type="button"
               className="btn btn-error"

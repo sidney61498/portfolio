@@ -1,5 +1,17 @@
 import {
-  ArrowLeft, Boxes, ChartColumn, History, LayoutDashboard, Menu, PackagePlus, Receipt, Settings, ShoppingCart, Store, Tags, Truck,
+  ArrowLeft,
+  Boxes,
+  ChartColumn,
+  History,
+  LayoutDashboard,
+  Menu,
+  PackagePlus,
+  Receipt,
+  Settings,
+  ShoppingCart,
+  Store,
+  Tags,
+  Truck,
 } from 'lucide-react'
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router'
@@ -30,7 +42,12 @@ const NAV: { heading?: string; items: NavItem[] }[] = [
     heading: 'Inventory',
     items: [
       { to: 'inventory/products', label: 'Products', icon: Boxes, badge: 'lowStock' },
-      { to: 'inventory/stock-in', label: 'Stock-in', icon: PackagePlus, action: 'inventory.adjust' },
+      {
+        to: 'inventory/stock-in',
+        label: 'Stock-in',
+        icon: PackagePlus,
+        action: 'inventory.adjust',
+      },
       { to: 'inventory/movements', label: 'Stock ledger', icon: History },
       { to: 'inventory/categories', label: 'Categories', icon: Tags },
       { to: 'inventory/suppliers', label: 'Suppliers', icon: Truck },
@@ -88,7 +105,11 @@ export function PosLayout() {
       <input id="pos-drawer" type="checkbox" className="drawer-toggle" aria-label="Toggle menu" />
       <div className="drawer-content bg-base-200 flex min-h-screen flex-col">
         <header className="navbar bg-base-100 border-base-300 sticky top-0 z-30 gap-2 border-b px-3">
-          <label htmlFor="pos-drawer" className="btn btn-ghost btn-sm btn-circle lg:hidden" aria-label="Open menu">
+          <label
+            htmlFor="pos-drawer"
+            className="btn btn-ghost btn-sm btn-circle lg:hidden"
+            aria-label="Open menu"
+          >
             <Menu className="size-5" />
           </label>
           <div className="flex-1 truncate font-semibold">
@@ -100,7 +121,8 @@ export function PosLayout() {
         </header>
         <div className="bg-info/10 text-info-content/90 border-base-300 border-b px-4 py-1.5 text-center text-xs">
           <span className="text-base-content/80">
-            Clean-room rebuild for my portfolio. The original systems are private. All data is fictional and stays in your browser.
+            Clean-room rebuild for my portfolio. The original systems are private. All data is
+            fictional and stays in your browser.
             {!persistenceAvailable() && ' Storage is blocked here, so changes won’t be saved.'}
           </span>
         </div>
@@ -117,7 +139,9 @@ export function PosLayout() {
             <Store className="text-primary size-6" />
             <div>
               <p className="font-display leading-tight font-bold">Tindahan POS</p>
-              <p className="text-base-content/60 text-xs">Demo · {role === 'manager' ? 'Manager' : 'Cashier'}</p>
+              <p className="text-base-content/60 text-xs">
+                Demo · {role === 'manager' ? 'Manager' : 'Cashier'}
+              </p>
             </div>
           </div>
           <nav className="flex-1" aria-label="Demo">
@@ -130,11 +154,17 @@ export function PosLayout() {
                       const locked = item.action && !can(role, item.action)
                       return (
                         <li key={item.to}>
-                          <NavLink to={`/demo/pos/${item.to}`} className={({ isActive }) => (isActive ? 'menu-active' : '')}>
+                          <NavLink
+                            to={`/demo/pos/${item.to}`}
+                            className={({ isActive }) => (isActive ? 'menu-active' : '')}
+                          >
                             <item.icon className="size-4" />
                             <span className="flex-1">{item.label}</span>
                             {item.badge === 'lowStock' && lowStock > 0 && (
-                              <span className="badge badge-warning badge-sm" title={`${lowStock} low on stock`}>
+                              <span
+                                className="badge badge-warning badge-sm"
+                                title={`${lowStock} low on stock`}
+                              >
                                 {lowStock}
                               </span>
                             )}

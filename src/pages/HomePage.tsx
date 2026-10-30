@@ -6,6 +6,7 @@ import { DemoShowcase } from '@/components/home/DemoShowcase'
 import { Experience } from '@/components/home/Experience'
 import { HarnessFeature } from '@/components/home/HarnessFeature'
 import { Hero } from '@/components/home/Hero'
+import { SideProjectFeature } from '@/components/home/SideProjectFeature'
 import { Skills } from '@/components/home/Skills'
 import { TechMarquee } from '@/components/home/TechMarquee'
 import { WorkGrid } from '@/components/home/WorkGrid'
@@ -31,6 +32,7 @@ export function HomePage() {
       <Skills />
       <WorkGrid />
       <HarnessFeature />
+      <SideProjectFeature />
       <DemoShowcase />
       <Experience />
       <Contact />

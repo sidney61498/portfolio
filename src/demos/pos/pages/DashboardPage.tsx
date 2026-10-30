@@ -42,11 +42,21 @@ function Dashboard() {
             <SalesChart rows={d.last7} />
             <details className="text-sm">
               <summary className="text-base-content/60 cursor-pointer">Show as table</summary>
-              <table className="table-sm table mt-2">
-                <thead><tr><th>Day</th><th className="text-right">Sales</th><th className="text-right">Transactions</th></tr></thead>
+              <table className="table-sm mt-2 table">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th className="text-right">Sales</th>
+                    <th className="text-right">Transactions</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {d.last7.map((r) => (
-                    <tr key={r.date}><td>{r.date}</td><td className="text-right">{formatPHP(r.sales)}</td><td className="text-right">{r.transactions}</td></tr>
+                    <tr key={r.date}>
+                      <td>{r.date}</td>
+                      <td className="text-right">{formatPHP(r.sales)}</td>
+                      <td className="text-right">{r.transactions}</td>
+                    </tr>
                   ))}
                 </tbody>
               </table>
@@ -66,14 +76,19 @@ function Dashboard() {
                 {d.lowStock.slice(0, 8).map((p) => (
                   <li key={p.id} className="flex justify-between py-1.5">
                     <span>{p.name}</span>
-                    <span className={`badge badge-sm ${p.stock === 0 ? 'badge-error' : 'badge-warning'}`}>
+                    <span
+                      className={`badge badge-sm ${p.stock === 0 ? 'badge-error' : 'badge-warning'}`}
+                    >
                       {p.stock} / {p.reorderLevel}
                     </span>
                   </li>
                 ))}
               </ul>
             )}
-            <Link to="/demo/pos/inventory/stock-in" className="btn btn-sm btn-soft btn-primary mt-2">
+            <Link
+              to="/demo/pos/inventory/stock-in"
+              className="btn btn-sm btn-soft btn-primary mt-2"
+            >
               Receive stock
             </Link>
           </div>
@@ -84,10 +99,20 @@ function Dashboard() {
             <h2 className="card-title text-base">Top products, last 30 days</h2>
             <div className="overflow-x-auto">
               <table className="table-sm table">
-                <thead><tr><th>Product</th><th className="text-right">Units</th><th className="text-right">Revenue</th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th className="text-right">Units</th>
+                    <th className="text-right">Revenue</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {d.topProducts.map((p) => (
-                    <tr key={p.productId}><td>{p.name}</td><td className="text-right">{p.qty}</td><td className="text-right">{formatPHP(p.revenue)}</td></tr>
+                    <tr key={p.productId}>
+                      <td>{p.name}</td>
+                      <td className="text-right">{p.qty}</td>
+                      <td className="text-right">{formatPHP(p.revenue)}</td>
+                    </tr>
                   ))}
                 </tbody>
               </table>
@@ -107,7 +132,11 @@ function Dashboard() {
                   </Link>
                   <div className="text-right">
                     <span>{formatPHP(s.total)}</span>
-                    {s.status !== 'completed' && <span className={`badge badge-xs ml-1 ${STATUS_BADGE[s.status]}`}>{statusLabel(s.status)}</span>}
+                    {s.status !== 'completed' && (
+                      <span className={`badge badge-xs ml-1 ${STATUS_BADGE[s.status]}`}>
+                        {statusLabel(s.status)}
+                      </span>
+                    )}
                   </div>
                 </li>
               ))}

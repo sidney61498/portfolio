@@ -10,6 +10,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'cloudstaff', label: 'Cloudstaff' },
   { id: 'earlier', label: 'Earlier systems' },
+  { id: 'personal', label: 'Side projects' },
 ]
 
 export function WorkGrid() {

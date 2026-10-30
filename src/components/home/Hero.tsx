@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { profile } from '@/content/profile'
+import { projects } from '@/content/projects'
 import { CountUp } from '@/components/motion/CountUp'
 import photo from '@/assets/sidney.webp'
 
@@ -17,7 +18,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 const STATS = [
   { value: 5, suffix: '+', label: 'years in production' },
   { value: 7000, prefix: '~', label: 'staff on the system I maintain' },
-  { value: 15, label: 'systems on this site' },
+  { value: projects.length, label: 'projects on this site' },
   { value: 32, label: 'commands in my AI harness' },
 ]
 
@@ -138,10 +139,10 @@ export function Hero() {
               className="border-base-100 relative size-full rounded-full border-4 object-cover"
             />
           </div>
-          <div className="bg-base-100/90 border-base-300 animate-float absolute top-6 -left-10 hidden items-center gap-2 rounded-full border px-3 py-1.5 text-sm shadow-lg backdrop-blur sm:flex">
+          <div className="bg-base-100/90 border-base-300 animate-float absolute top-6 -left-10 hidden items-center gap-2 rounded-full border px-3 py-1.5 text-sm shadow-lg backdrop-blur xl:flex">
             <Users className="text-accent size-4" /> ~7,000 users
           </div>
-          <div className="bg-base-100/90 border-base-300 animate-float absolute -right-8 bottom-10 hidden items-center gap-2 rounded-full border px-3 py-1.5 text-sm shadow-lg backdrop-blur [animation-delay:-3s] sm:flex">
+          <div className="bg-base-100/90 border-base-300 animate-float absolute -right-8 bottom-10 hidden items-center gap-2 rounded-full border px-3 py-1.5 text-sm shadow-lg backdrop-blur [animation-delay:-3s] xl:flex">
             <Bot className="text-primary size-4" /> AI-assisted dev
           </div>
         </motion.div>

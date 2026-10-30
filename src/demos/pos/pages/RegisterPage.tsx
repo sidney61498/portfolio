@@ -46,7 +46,12 @@ export function RegisterPage() {
       const discount = Math.min(c.discount, maxLineDiscount(role, p.price * c.qty))
       return { ...c, discount, name: p.name, unitPrice: p.price, unitCost: p.cost }
     })
-  const totals = computeTotals(lines, can(role, 'discount.order') ? orderDiscount : 0, settings.vatRate, settings.vatInclusive)
+  const totals = computeTotals(
+    lines,
+    can(role, 'discount.order') ? orderDiscount : 0,
+    settings.vatRate,
+    settings.vatInclusive,
+  )
 
   const visible = products.filter(
     (p) =>
@@ -80,7 +85,9 @@ export function RegisterPage() {
       return
     }
     setCart((c) =>
-      inCart ? c.map((i) => (i.productId === product.id ? { ...i, qty: i.qty + 1 } : i)) : [...c, { productId: product.id, qty: 1, discount: 0 }],
+      inCart
+        ? c.map((i) => (i.productId === product.id ? { ...i, qty: i.qty + 1 } : i))
+        : [...c, { productId: product.id, qty: 1, discount: 0 }],
     )
   }
 
@@ -128,7 +135,14 @@ export function RegisterPage() {
           <div className="mb-3 grid gap-2 sm:grid-cols-2">
             <label className="input w-full">
               <Search className="size-4 opacity-60" />
-              <input ref={searchRef} type="search" placeholder="Search name or SKU" value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Search products" />
+              <input
+                ref={searchRef}
+                type="search"
+                placeholder="Search name or SKU"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search products"
+              />
               <kbd className="kbd kbd-sm">F2</kbd>
             </label>
             <form onSubmit={scan}>
@@ -147,7 +161,11 @@ export function RegisterPage() {
             </form>
           </div>
 
-          <div role="tablist" aria-label="Categories" className="tabs tabs-box bg-base-100 mb-3 flex-nowrap overflow-x-auto">
+          <div
+            role="tablist"
+            aria-label="Categories"
+            className="tabs tabs-box bg-base-100 mb-3 flex-nowrap overflow-x-auto"
+          >
             {[{ id: 'all', name: 'All' }, ...categories].map((c) => (
               <button
                 key={c.id}
@@ -179,10 +197,14 @@ export function RegisterPage() {
                     <div className="bg-primary/10 text-primary rounded-field grid h-12 place-items-center text-lg font-bold">
                       {initials(p.name)}
                     </div>
-                    <p className="line-clamp-2 min-h-10 text-sm leading-tight font-medium">{p.name}</p>
+                    <p className="line-clamp-2 min-h-10 text-sm leading-tight font-medium">
+                      {p.name}
+                    </p>
                     <div className="flex items-center justify-between">
                       <span className="font-semibold">{formatPHP(p.price)}</span>
-                      <span className={`badge badge-xs ${out ? 'badge-error' : low ? 'badge-warning' : 'badge-ghost'}`}>
+                      <span
+                        className={`badge badge-xs ${out ? 'badge-error' : low ? 'badge-warning' : 'badge-ghost'}`}
+                      >
                         {out ? 'Out' : `${p.stock} left`}
                       </span>
                     </div>
@@ -190,16 +212,25 @@ export function RegisterPage() {
                 </button>
               )
             })}
-            {visible.length === 0 && <p className="text-base-content/60 col-span-full py-10 text-center">No products match.</p>}
+            {visible.length === 0 && (
+              <p className="text-base-content/60 col-span-full py-10 text-center">
+                No products match.
+              </p>
+            )}
           </div>
         </section>
 
         {/* Cart */}
-        <section id="cart" aria-label="Cart" className="card bg-base-100 border-base-300 h-fit border lg:sticky lg:top-20">
+        <section
+          id="cart"
+          aria-label="Cart"
+          className="card bg-base-100 border-base-300 h-fit border lg:sticky lg:top-20"
+        >
           <div className="card-body gap-3 p-4">
             <div className="flex items-center justify-between">
               <h2 className="card-title text-base">
-                <ShoppingCart className="size-5" /> Cart {itemCount > 0 && <span className="badge badge-primary badge-sm">{itemCount}</span>}
+                <ShoppingCart className="size-5" /> Cart{' '}
+                {itemCount > 0 && <span className="badge badge-primary badge-sm">{itemCount}</span>}
               </h2>
               {cart.length > 0 && (
                 <button type="button" className="btn btn-ghost btn-xs" onClick={() => setCart([])}>
@@ -209,7 +240,9 @@ export function RegisterPage() {
             </div>
 
             {lines.length === 0 ? (
-              <p className="text-base-content/60 py-8 text-center text-sm">Tap a product or scan a barcode to start.</p>
+              <p className="text-base-content/60 py-8 text-center text-sm">
+                Tap a product or scan a barcode to start.
+              </p>
             ) : (
               <ul className="divide-base-300 -mx-1 max-h-[45vh] divide-y overflow-y-auto">
                 {lines.map((l) => {
@@ -219,30 +252,57 @@ export function RegisterPage() {
                     <li key={l.productId} className="px-1 py-2">
                       <div className="flex items-start justify-between gap-2">
                         <span className="text-sm leading-tight font-medium">{l.name}</span>
-                        <span className="text-sm font-semibold whitespace-nowrap">{formatPHP(gross - l.discount)}</span>
+                        <span className="text-sm font-semibold whitespace-nowrap">
+                          {formatPHP(gross - l.discount)}
+                        </span>
                       </div>
                       <div className="mt-1 flex items-center justify-between gap-2">
                         <div className="join">
-                          <button type="button" className="btn btn-xs join-item" onClick={() => setQty(l.productId, l.qty - 1)} aria-label={`One less ${l.name}`}>
+                          <button
+                            type="button"
+                            className="btn btn-xs join-item"
+                            onClick={() => setQty(l.productId, l.qty - 1)}
+                            aria-label={`One less ${l.name}`}
+                          >
                             <Minus className="size-3" />
                           </button>
-                          <span className="btn btn-xs join-item pointer-events-none w-8" aria-label="Quantity">{l.qty}</span>
-                          <button type="button" className="btn btn-xs join-item" onClick={() => setQty(l.productId, l.qty + 1)} aria-label={`One more ${l.name}`}>
+                          <span
+                            className="btn btn-xs join-item pointer-events-none w-8"
+                            aria-label="Quantity"
+                          >
+                            {l.qty}
+                          </span>
+                          <button
+                            type="button"
+                            className="btn btn-xs join-item"
+                            onClick={() => setQty(l.productId, l.qty + 1)}
+                            aria-label={`One more ${l.name}`}
+                          >
                             <Plus className="size-3" />
                           </button>
                         </div>
-                        <span className="text-base-content/60 text-xs">@ {formatPHP(l.unitPrice)}</span>
+                        <span className="text-base-content/60 text-xs">
+                          @ {formatPHP(l.unitPrice)}
+                        </span>
                         <div className="flex">
                           <button
                             type="button"
                             className={`btn btn-ghost btn-xs ${l.discount ? 'text-accent' : ''}`}
-                            onClick={() => setDiscountFor(discountFor === l.productId ? null : l.productId)}
+                            onClick={() =>
+                              setDiscountFor(discountFor === l.productId ? null : l.productId)
+                            }
                             aria-label={`Discount on ${l.name}`}
                             title="Line discount"
                           >
-                            <Tag className="size-3" /> {l.discount > 0 && `−${formatPHP(l.discount)}`}
+                            <Tag className="size-3" />{' '}
+                            {l.discount > 0 && `−${formatPHP(l.discount)}`}
                           </button>
-                          <button type="button" className="btn btn-ghost btn-xs" onClick={() => setQty(l.productId, 0)} aria-label={`Remove ${l.name}`}>
+                          <button
+                            type="button"
+                            className="btn btn-ghost btn-xs"
+                            onClick={() => setQty(l.productId, 0)}
+                            aria-label={`Remove ${l.name}`}
+                          >
                             <Trash2 className="size-3" />
                           </button>
                         </div>
@@ -253,7 +313,11 @@ export function RegisterPage() {
                           max={cap}
                           capped={role === 'cashier'}
                           onApply={(d) => {
-                            setCart((c) => c.map((i) => (i.productId === l.productId ? { ...i, discount: d } : i)))
+                            setCart((c) =>
+                              c.map((i) =>
+                                i.productId === l.productId ? { ...i, discount: d } : i,
+                              ),
+                            )
                             setDiscountFor(null)
                           }}
                         />
@@ -283,16 +347,27 @@ export function RegisterPage() {
 
             <dl className="border-base-300 space-y-1 border-t pt-3 text-sm" aria-live="polite">
               <Row label="Subtotal" value={formatPHP(totals.subtotal)} />
-              {totals.discountTotal > 0 && <Row label="Discounts" value={`−${formatPHP(totals.discountTotal)}`} />}
+              {totals.discountTotal > 0 && (
+                <Row label="Discounts" value={`−${formatPHP(totals.discountTotal)}`} />
+              )}
               <Row label="VATable sales" value={formatPHP(totals.vatableSales)} muted />
-              <Row label={`VAT ${Math.round(settings.vatRate * 100)}%${settings.vatInclusive ? ' (included)' : ''}`} value={formatPHP(totals.vat)} muted />
+              <Row
+                label={`VAT ${Math.round(settings.vatRate * 100)}%${settings.vatInclusive ? ' (included)' : ''}`}
+                value={formatPHP(totals.vat)}
+                muted
+              />
               <div className="flex justify-between pt-1 text-xl font-bold">
                 <dt>Total</dt>
                 <dd>{formatPHP(totals.total)}</dd>
               </div>
             </dl>
 
-            <button type="button" className="btn btn-primary btn-lg w-full" disabled={!cart.length} onClick={() => setPaying(true)}>
+            <button
+              type="button"
+              className="btn btn-primary btn-lg w-full"
+              disabled={!cart.length}
+              onClick={() => setPaying(true)}
+            >
               Pay <kbd className="kbd kbd-sm text-base-content">F9</kbd>
             </button>
           </div>
@@ -311,7 +386,12 @@ export function RegisterPage() {
         </div>
       )}
 
-      <PaymentModal open={paying} total={totals.total} onClose={() => setPaying(false)} onPay={pay} />
+      <PaymentModal
+        open={paying}
+        total={totals.total}
+        onClose={() => setPaying(false)}
+        onPay={pay}
+      />
 
       <Modal
         open={!!receipt}
@@ -322,7 +402,12 @@ export function RegisterPage() {
             <button type="button" className="btn" onClick={() => window.print()}>
               Print
             </button>
-            <button type="button" className="btn btn-primary" onClick={() => setReceipt(null)} autoFocus>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => setReceipt(null)}
+              autoFocus
+            >
               New sale
             </button>
           </>
@@ -349,7 +434,9 @@ export function RegisterPage() {
 /** "Coffee 3-in-1 Sachet" → "CS", "Cola 290ml" → "CO": first letters of the first two words. */
 function initials(name: string) {
   const words = name.split(' ').filter((w) => /^[A-Za-z]/.test(w))
-  return (words.length > 1 ? words[0][0] + words[1][0] : words[0]?.slice(0, 2) ?? '?').toUpperCase()
+  return (
+    words.length > 1 ? words[0][0] + words[1][0] : (words[0]?.slice(0, 2) ?? '?')
+  ).toUpperCase()
 }
 
 function Row({ label, value, muted }: { label: string; value: string; muted?: boolean }) {
@@ -361,7 +448,17 @@ function Row({ label, value, muted }: { label: string; value: string; muted?: bo
   )
 }
 
-function DiscountEditor({ value, max, capped, onApply }: { value: number; max: number; capped: boolean; onApply: (d: number) => void }) {
+function DiscountEditor({
+  value,
+  max,
+  capped,
+  onApply,
+}: {
+  value: number
+  max: number
+  capped: boolean
+  onApply: (d: number) => void
+}) {
   const [text, setText] = useState(value ? toPesoString(value) : '')
   const parsed = text.trim() === '' ? 0 : parsePesos(text)
   const invalid = Number.isNaN(parsed) || parsed < 0 || parsed > max
@@ -375,16 +472,28 @@ function DiscountEditor({ value, max, capped, onApply }: { value: number; max: n
     >
       <label className={`input input-xs flex-1 ${invalid ? 'input-error' : ''}`}>
         ₱
-        <input autoFocus inputMode="decimal" value={text} onChange={(e) => setText(e.target.value)} aria-label="Line discount in pesos" />
+        <input
+          autoFocus
+          inputMode="decimal"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          aria-label="Line discount in pesos"
+        />
       </label>
       <button type="submit" className="btn btn-xs btn-primary" disabled={invalid}>
         Apply
       </button>
-      <button type="button" className="btn btn-xs btn-ghost" onClick={() => onApply(0)} aria-label="Remove discount">
+      <button
+        type="button"
+        className="btn btn-xs btn-ghost"
+        onClick={() => onApply(0)}
+        aria-label="Remove discount"
+      >
         <X className="size-3" />
       </button>
       <span className={`text-xs ${invalid ? 'text-error' : 'text-base-content/60'}`}>
-        max {formatPHP(max)}{capped && ' (10%)'}
+        max {formatPHP(max)}
+        {capped && ' (10%)'}
       </span>
     </form>
   )

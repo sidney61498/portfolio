@@ -32,14 +32,21 @@ export function Receipt({ sale, settings }: { sale: Sale; settings: Settings }) 
         </div>
       ))}
       <div className="border-base-content/30 my-2 border-t border-dashed" />
-      {sale.orderDiscount > 0 && <Row label="Order discount" value={`−${formatPHP(sale.orderDiscount)}`} />}
+      {sale.orderDiscount > 0 && (
+        <Row label="Order discount" value={`−${formatPHP(sale.orderDiscount)}`} />
+      )}
       <Row label="TOTAL" value={formatPHP(sale.total)} bold />
-      <Row label={sale.payment.method === 'cash' ? 'Cash' : `E-wallet ${sale.payment.reference ?? ''}`} value={formatPHP(sale.payment.tendered ?? sale.payment.amount)} />
+      <Row
+        label={sale.payment.method === 'cash' ? 'Cash' : `E-wallet ${sale.payment.reference ?? ''}`}
+        value={formatPHP(sale.payment.tendered ?? sale.payment.amount)}
+      />
       {sale.payment.method === 'cash' && <Row label="Change" value={formatPHP(sale.change)} />}
       <div className="border-base-content/30 my-2 border-t border-dashed" />
       <Row label={`VATable sales`} value={formatPHP(sale.vatableSales)} />
       <Row label={`VAT (${Math.round(settings.vatRate * 100)}%)`} value={formatPHP(sale.vat)} />
-      {sale.status !== 'completed' && <p className="mt-2 text-center font-bold uppercase">*** {statusLabel(sale.status)} ***</p>}
+      {sale.status !== 'completed' && (
+        <p className="mt-2 text-center font-bold uppercase">*** {statusLabel(sale.status)} ***</p>
+      )}
       <p className="mt-3 text-center text-xs">Salamat po! Come again.</p>
     </div>
   )

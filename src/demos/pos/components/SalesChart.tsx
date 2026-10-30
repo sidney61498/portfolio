@@ -21,7 +21,8 @@ function ChartTooltip({ active, payload }: TipProps) {
   )
 }
 
-const pesoTick = (v: number) => (v >= 100000 ? `₱${Math.round(v / 100000)}k` : `₱${Math.round(v / 100)}`)
+const pesoTick = (v: number) =>
+  v >= 100000 ? `₱${Math.round(v / 100000)}k` : `₱${Math.round(v / 100)}`
 
 /**
  * One series, so no legend: the card title names it. Thin bars with rounded tops, a recessive
@@ -33,9 +34,17 @@ export function SalesChart({ rows, height = 240 }: { rows: DayRow[]; height?: nu
   const grid = useCssVar('--color-base-300')
 
   return (
-    <div style={{ height }} role="img" aria-label={`Daily sales chart, ${rows.length} days. The table below has the same data.`}>
+    <div
+      style={{ height }}
+      role="img"
+      aria-label={`Daily sales chart, ${rows.length} days. The table below has the same data.`}
+    >
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={rows} margin={{ top: 8, right: 8, bottom: 0, left: 0 }} barCategoryGap="30%">
+        <BarChart
+          data={rows}
+          margin={{ top: 8, right: 8, bottom: 0, left: 0 }}
+          barCategoryGap="30%"
+        >
           <CartesianGrid vertical={false} stroke={grid} />
           <XAxis
             dataKey="date"
@@ -46,7 +55,13 @@ export function SalesChart({ rows, height = 240 }: { rows: DayRow[]; height?: nu
             interval="preserveStartEnd"
             minTickGap={16}
           />
-          <YAxis tickFormatter={pesoTick} tick={{ fill: ink, fillOpacity: 0.6, fontSize: 12 }} axisLine={false} tickLine={false} width={56} />
+          <YAxis
+            tickFormatter={pesoTick}
+            tick={{ fill: ink, fillOpacity: 0.6, fontSize: 12 }}
+            axisLine={false}
+            tickLine={false}
+            width={56}
+          />
           <Tooltip content={<ChartTooltip />} cursor={{ fill: grid, fillOpacity: 0.4 }} />
           <Bar dataKey="sales" fill={bar} radius={[4, 4, 0, 0]} maxBarSize={36} />
         </BarChart>

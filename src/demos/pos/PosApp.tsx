@@ -6,8 +6,12 @@ import { RegisterPage } from './pages/RegisterPage'
 // Register is the landing screen; everything else loads when first opened.
 const DashboardPage = lazy(() => import('./pages/DashboardPage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))
-const CategoriesPage = lazy(() => import('./pages/NamedListPages').then((m) => ({ default: m.CategoriesPage })))
-const SuppliersPage = lazy(() => import('./pages/NamedListPages').then((m) => ({ default: m.SuppliersPage })))
+const CategoriesPage = lazy(() =>
+  import('./pages/NamedListPages').then((m) => ({ default: m.CategoriesPage })),
+)
+const SuppliersPage = lazy(() =>
+  import('./pages/NamedListPages').then((m) => ({ default: m.SuppliersPage })),
+)
 const StockInPage = lazy(() => import('./pages/StockInPage'))
 const MovementsPage = lazy(() => import('./pages/MovementsPage'))
 const SalesPage = lazy(() => import('./pages/SalesPage'))
@@ -27,7 +31,14 @@ export function PosApp() {
       <Route element={<PosLayout />}>
         <Route index element={<Navigate to="/demo/pos/register" replace />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="*" element={<Suspense fallback={<Loading />}><LazyRoutes /></Suspense>} />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Loading />}>
+              <LazyRoutes />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   )

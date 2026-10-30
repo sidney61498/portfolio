@@ -17,7 +17,12 @@ export function Toaster() {
           <div key={t.id} className={`alert ${cls} max-w-sm shadow-lg`}>
             <Icon className="size-5 shrink-0" />
             <span className="text-sm whitespace-normal">{t.message}</span>
-            <button type="button" className="btn btn-ghost btn-xs btn-circle" onClick={() => dismiss(t.id)} aria-label="Dismiss">
+            <button
+              type="button"
+              className="btn btn-ghost btn-xs btn-circle"
+              onClick={() => dismiss(t.id)}
+              aria-label="Dismiss"
+            >
               <X className="size-4" />
             </button>
           </div>

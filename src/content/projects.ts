@@ -1,8 +1,12 @@
+import phoenixAdmin from '@/assets/work/phoenix/admin-dashboard.webp'
+import phoenixStaff from '@/assets/work/phoenix/staff-dashboard.webp'
+import staffCentralHome from '@/assets/work/staffcentral/staff-home.webp'
+
 // Cloudstaff case studies and earlier systems share one shape, so one card and one page template
 // serve both. Confidentiality: no source code, internal hostnames, ticket keys, client names,
 // real people, real patients or real salaries. Visuals are mock screens or diagrams only.
 
-export type ProjectGroup = 'cloudstaff' | 'earlier'
+export type ProjectGroup = 'cloudstaff' | 'earlier' | 'personal'
 
 export interface Screenshot {
   /** Imported image (redacted copy under src/assets/work/<slug>/). */
@@ -69,6 +73,13 @@ export const projects: Project[] = [
       outcome:
         'New policies ship without disrupting day-to-day use, and HR and Operations get reports they can rely on.',
       visuals: [],
+      screenshots: [
+        {
+          src: staffCentralHome,
+          alt: 'StaffCentral staff home page with a timesheet lock-in prompt, shift actions and attendance score',
+          caption: 'StaffCentral staff home: timesheet lock-in, today’s shift actions and attendance score. Personal details blurred.',
+        },
+      ],
     },
   },
   {
@@ -118,6 +129,18 @@ export const projects: Project[] = [
       ],
       outcome: 'Moves the platform toward fewer moving parts in production and one less service to maintain.',
       visuals: [],
+      screenshots: [
+        {
+          src: phoenixStaff,
+          alt: 'StaffCentral Phoenix staff dashboard with shift panel, points, badges and leave balances',
+          caption: 'StaffCentral Phoenix staff dashboard: shift panel, points, badges and leave balances. Internal announcement blurred.',
+        },
+        {
+          src: phoenixAdmin,
+          alt: 'Phoenix Admin dashboard with workforce KPI cards and trend charts, figures blurred',
+          caption: 'Phoenix Admin dashboard: workforce KPI cards and trend charts. All figures blurred, since they are company data.',
+        },
+      ],
     },
   },
   {
@@ -172,6 +195,20 @@ export const projects: Project[] = [
       outcome: 'A consistent look across old and new pages without a risky rewrite.',
       visuals: [],
     },
+  },
+
+  // ---- Personal projects -------------------------------------------------------------------
+  {
+    slug: 'pos-platform',
+    title: 'POS Inventory: one Laravel API, three apps',
+    employer: 'Personal project',
+    group: 'personal',
+    period: '2026',
+    stack: ['Laravel 13', 'Sanctum', 'React 19', 'Electron', 'React Native (Expo)', 'SQLite', 'MySQL'],
+    summary:
+      'A multi-branch POS and inventory platform: an 85-endpoint Laravel API serving a web back office, an offline-first desktop app and a mobile app. Self-taught; Electron and React Native are not part of my professional experience.',
+    featured: true,
+    href: '/projects/pos-platform',
   },
 
   // ---- Earlier systems ---------------------------------------------------------------------

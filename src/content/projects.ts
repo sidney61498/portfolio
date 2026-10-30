@@ -28,7 +28,8 @@ export interface Project {
 
 const MMSU = 'Mariano Marcos State University'
 const BNH = 'The Black Nazarene Hospital'
-const MMSU_STACK = ['Laravel', 'Vue', 'MySQL']
+// Resume: Laravel and Vue, with newer systems on React.
+const MMSU_STACK = ['Laravel', 'Vue / React', 'MySQL']
 const BNH_STACK = ['Laravel', 'React']
 
 export const projects: Project[] = [
@@ -215,7 +216,7 @@ export const projects: Project[] = [
         'An internal payroll system for Mariano Marcos State University, one of several administrative systems I built and maintained there.',
       problem:
         'Payroll is repetitive, rule-heavy work where a small mistake affects someone’s pay. The goal was to automate the routine computation and cut manual effort.',
-      role: 'Full-stack developer: Laravel backend, Vue frontend and MySQL database, plus user training and support after launch.',
+      role: 'Full-stack developer (Laravel, Vue or React, MySQL), plus user training and support after launch.',
       approach: [
         'Turned the payroll rules into code, so every run computes pay and deductions the same way.',
         'Trained the staff who run payroll and handled support, fixes and enhancements after go-live.',
@@ -235,7 +236,7 @@ export const projects: Project[] = [
     page: {
       context: 'An internal document repository for Mariano Marcos State University.',
       problem: 'Documents kept in scattered files are slow to find and easy to lose.',
-      role: 'Full-stack developer (Laravel, Vue, MySQL), plus user training and support.',
+      role: 'Full-stack developer (Laravel, Vue or React, MySQL), plus user training and support.',
       approach: [
         'Stored documents in one place, together with the details needed to find them again.',
         'Trained users and kept improving the system after launch.',
@@ -259,7 +260,7 @@ export const projects: Project[] = [
         'Built during the COVID-19 pandemic, when the university needed a reliable record of who had been on campus.',
       problem:
         'Contact tracing only works if visit records are complete and can be searched quickly when someone tests positive.',
-      role: 'Full-stack developer (Laravel, Vue, MySQL), plus training and support for the staff using it.',
+      role: 'Full-stack developer (Laravel, Vue or React, MySQL), plus training and support for the staff using it.',
       approach: [
         'Recorded campus visits in a database, so they could be searched instead of read through by hand.',
         'Made it possible to look up who may have been in contact with a positive case.',

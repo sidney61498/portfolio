@@ -68,11 +68,11 @@ get a full case study page. The others stay as cards so the page doesn't drag. D
 
 | Employer | System | Stack | On the site | Live demo |
 |---|---|---|---|---|
-| MMSU | Point of Sale | Laravel + Vue + MySQL | Card → POS demo | ✅ `/demo/pos` |
-| MMSU | Inventory | Laravel + Vue + MySQL | Card → POS demo (inventory module) | ✅ `/demo/pos/inventory` |
-| MMSU | Payroll | Laravel + Vue + MySQL | **Case study page** | Optional `/demo/payroll` |
-| MMSU | Document repository | Laravel + Vue + MySQL | Case study page | — |
-| MMSU | COVID-19 contact tracing | Laravel + Vue + MySQL | **Case study page** | Optional `/demo/contact-tracing` |
+| MMSU | Point of Sale | Laravel + Vue/React + MySQL | Card → POS demo | ✅ `/demo/pos` |
+| MMSU | Inventory | Laravel + Vue/React + MySQL | Card → POS demo (inventory module) | ✅ `/demo/pos/inventory` |
+| MMSU | Payroll | Laravel + Vue/React + MySQL | **Case study page** | Optional `/demo/payroll` |
+| MMSU | Document repository | Laravel + Vue/React + MySQL | Case study page | — |
+| MMSU | COVID-19 contact tracing | Laravel + Vue/React + MySQL | **Case study page** | Optional `/demo/contact-tracing` |
 | Black Nazarene Hospital | Patient records | Laravel + React | **Case study page** | — (health data: mock visual only) |
 | Black Nazarene Hospital | Patient surveys | Laravel + React | Card | — |
 | Black Nazarene Hospital | Hospital inventory | Laravel + React | Card → POS demo (inventory module) | ✅ shared with POS |

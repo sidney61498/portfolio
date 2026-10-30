@@ -12,7 +12,7 @@ export const profile = {
   email: 'sidney.medrano61498@gmail.com',
   links: {
     github: 'https://github.com/sidney61498',
-    linkedin: '[LinkedIn profile URL]',
+    linkedin: 'https://www.linkedin.com/in/sidneym61498/',
   },
   // Add a public resume PDF to /public (no phone number, no references' contacts), then set this.
   resumeUrl: null as string | null,

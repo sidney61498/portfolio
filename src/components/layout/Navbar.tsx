@@ -8,6 +8,7 @@ const SECTIONS = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'work', label: 'Work' },
+  { id: 'harness', label: 'AI Harness' },
   { id: 'demo', label: 'Demo' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
@@ -35,10 +36,18 @@ export function Navbar() {
       <nav className="navbar mx-auto max-w-6xl px-4" aria-label="Main">
         <div className="navbar-start">
           <div className="dropdown lg:hidden">
-            <button type="button" tabIndex={0} className="btn btn-ghost btn-circle btn-sm" aria-label="Open menu">
+            <button
+              type="button"
+              tabIndex={0}
+              className="btn btn-ghost btn-circle btn-sm"
+              aria-label="Open menu"
+            >
               <Menu className="size-5" />
             </button>
-            <ul tabIndex={0} className="menu dropdown-content bg-base-100 rounded-box border-base-300 z-50 mt-3 w-52 border p-2 shadow-lg">
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content bg-base-100 rounded-box border-base-300 z-50 mt-3 w-52 border p-2 shadow-lg"
+            >
               {links}
             </ul>
           </div>

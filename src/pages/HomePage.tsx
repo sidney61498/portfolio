@@ -4,8 +4,10 @@ import { About } from '@/components/home/About'
 import { Contact } from '@/components/home/Contact'
 import { DemoShowcase } from '@/components/home/DemoShowcase'
 import { Experience } from '@/components/home/Experience'
+import { HarnessFeature } from '@/components/home/HarnessFeature'
 import { Hero } from '@/components/home/Hero'
 import { Skills } from '@/components/home/Skills'
+import { TechMarquee } from '@/components/home/TechMarquee'
 import { WorkGrid } from '@/components/home/WorkGrid'
 
 export function HomePage() {
@@ -24,9 +26,11 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <TechMarquee />
       <About />
       <Skills />
       <WorkGrid />
+      <HarnessFeature />
       <DemoShowcase />
       <Experience />
       <Contact />

@@ -4,6 +4,13 @@
 
 export type ProjectGroup = 'cloudstaff' | 'earlier'
 
+export interface Screenshot {
+  /** Imported image (redacted copy under src/assets/work/<slug>/). */
+  src: string
+  alt: string
+  caption: string
+}
+
 export interface CaseStudyPage {
   context: string
   problem?: string
@@ -11,6 +18,7 @@ export interface CaseStudyPage {
   approach: string[]
   outcome: string
   visuals: string[]
+  screenshots?: Screenshot[]
 }
 
 export interface Project {
@@ -23,6 +31,8 @@ export interface Project {
   summary: string
   featured?: boolean
   page?: CaseStudyPage
+  /** A dedicated page instead of the case-study template (e.g. the AI harness). */
+  href?: string
   demo?: { href: string; label: string }
 }
 
@@ -115,26 +125,12 @@ export const projects: Project[] = [
     title: 'An AI-assisted development harness',
     employer: 'Cloudstaff (personal tooling)',
     group: 'cloudstaff',
-    period: '2025 – present',
+    period: '2026',
     stack: ['Claude Code', 'Skills & subagents', 'Hooks', 'Bash', 'GitHub CLI', 'Jira API'],
     summary:
       'Guardrails, automation and a skeptic review agent that keep AI coding agents inside the team’s branch, release and security rules.',
     featured: true,
-    page: {
-      context:
-        'AI coding agents are fast, but in a multi-repo team with strict release rules, speed without guardrails creates risk: commits on the wrong branch, PRs to the wrong environment, unreviewed changes.',
-      role: 'Designed and built it for my own daily work across three codebases.',
-      approach: [
-        'Always-on rules: branch guards, PR target defaults, no secrets, no raw SQL concatenation, Docker-only execution.',
-        'Skills: per-framework convention guides (CakePHP 1.3, CakePHP 3, Laravel 12) that load automatically, plus analysis, testing and secure-coding checklists.',
-        'Commands: one-step workflows for PRs, staged deploys, ticket updates, database lookups and time logging, each with points where a human must decide.',
-        'A skeptic reviewer agent that assumes bugs exist and must cite file and line evidence for every “this still works” claim.',
-        'A session diary that records what was done and why, so context carries across days.',
-      ],
-      outcome:
-        'Routine work such as PRs, staged deploys, ticket updates and time logs takes one command, while merges into shared environments still need an explicit human go-ahead.',
-      visuals: [],
-    },
+    href: '/ai-harness',
   },
   {
     slug: 'automation-qa',

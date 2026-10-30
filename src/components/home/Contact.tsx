@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { profile } from '@/content/profile'
 import { isPlaceholder } from '@/lib/placeholders'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/BrandIcons'
+import { Reveal } from '@/components/motion/Reveal'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Text } from '@/components/ui/Text'
 
@@ -36,7 +37,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-20">
-      <div className="mx-auto max-w-3xl px-4 text-center">
+      <Reveal className="mx-auto max-w-3xl px-4 text-center">
         <SectionHeading eyebrow="Contact" title="Let’s talk" />
         <p className="text-base-content/70 -mt-6 mb-8 text-lg">
           Have a role or a project in mind? Email is the fastest way to reach me.
@@ -45,11 +46,18 @@ export function Contact() {
           <a href={`mailto:${profile.email}`} className="btn btn-primary join-item">
             <Mail className="size-4" /> {profile.email}
           </a>
-          <button type="button" className="btn btn-primary btn-soft join-item" onClick={copy} aria-label="Copy email address">
+          <button
+            type="button"
+            className="btn btn-primary btn-soft join-item"
+            onClick={copy}
+            aria-label="Copy email address"
+          >
             {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
           </button>
         </div>
-        <span className="sr-only" aria-live="polite">{copied ? 'Email copied' : ''}</span>
+        <span className="sr-only" aria-live="polite">
+          {copied ? 'Email copied' : ''}
+        </span>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <SocialLink href={profile.links.linkedin} label="LinkedIn" icon={<LinkedinIcon />} />
           <SocialLink href={profile.links.github} label="GitHub" icon={<GithubIcon />} />
@@ -60,7 +68,7 @@ export function Contact() {
           )}
         </div>
         <p className="text-base-content/60 mt-8 text-sm">References available on request.</p>
-      </div>
+      </Reveal>
     </section>
   )
 }

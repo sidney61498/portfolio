@@ -1,7 +1,9 @@
 import { ArrowLeft, ArrowRight, ImageIcon, PlayCircle } from 'lucide-react'
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link, Navigate, useParams } from 'react-router'
 import { projectBySlug, projects } from '@/content/projects'
+import { Reveal } from '@/components/motion/Reveal'
+import { Gallery } from '@/components/ui/Gallery'
 import { Text } from '@/components/ui/Text'
 import { NotFoundPage } from './NotFoundPage'
 
@@ -9,10 +11,14 @@ const withPages = projects.filter((p) => p.page)
 
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="mb-10">
-      <h2 className="text-accent mb-3 text-sm font-semibold tracking-widest uppercase">{title}</h2>
-      <div className="text-base-content/85 text-lg leading-relaxed">{children}</div>
-    </section>
+    <Reveal className="mb-10">
+      <section>
+        <h2 className="text-accent mb-3 text-sm font-semibold tracking-widest uppercase">
+          {title}
+        </h2>
+        <div className="text-base-content/85 text-lg leading-relaxed">{children}</div>
+      </section>
+    </Reveal>
   )
 }
 
@@ -24,6 +30,7 @@ export function CaseStudyPage() {
     if (project) document.title = `${project.title} | Sidney Medrano`
   }, [project])
 
+  if (project?.href) return <Navigate to={project.href} replace />
   if (!project?.page) return <NotFoundPage />
   const { page } = project
 
@@ -47,6 +54,12 @@ export function CaseStudyPage() {
           </span>
         ))}
       </div>
+
+      {page.screenshots && page.screenshots.length > 0 && (
+        <Reveal className="mb-12">
+          <Gallery shots={page.screenshots} />
+        </Reveal>
+      )}
 
       <Block title="Context">
         <Text>{page.context}</Text>
@@ -73,7 +86,10 @@ export function CaseStudyPage() {
       </Block>
 
       {page.visuals.map((v) => (
-        <figure key={v} className="border-base-300 bg-base-200 rounded-box mb-10 grid min-h-48 place-items-center border-2 border-dashed p-6 text-center">
+        <figure
+          key={v}
+          className="border-base-300 bg-base-200 rounded-box mb-10 grid min-h-48 place-items-center border-2 border-dashed p-6 text-center"
+        >
           <div>
             <ImageIcon className="text-base-content/40 mx-auto mb-2 size-8" />
             <figcaption className="text-base-content/70">
@@ -89,15 +105,28 @@ export function CaseStudyPage() {
         </Link>
       )}
 
-      <nav className="border-base-300 flex justify-between gap-4 border-t pt-8" aria-label="More case studies">
+      <nav
+        className="border-base-300 flex justify-between gap-4 border-t pt-8"
+        aria-label="More case studies"
+      >
         {prev ? (
-          <Link to={`/work/${prev.slug}`} className="btn btn-ghost h-auto max-w-[48%] py-2 text-left">
-            <ArrowLeft className="size-4 shrink-0" /> <span className="line-clamp-2">{prev.title}</span>
+          <Link
+            to={`/work/${prev.slug}`}
+            className="btn btn-ghost h-auto max-w-[48%] py-2 text-left"
+          >
+            <ArrowLeft className="size-4 shrink-0" />{' '}
+            <span className="line-clamp-2">{prev.title}</span>
           </Link>
-        ) : <span />}
+        ) : (
+          <span />
+        )}
         {next && (
-          <Link to={`/work/${next.slug}`} className="btn btn-ghost h-auto max-w-[48%] py-2 text-right">
-            <span className="line-clamp-2">{next.title}</span> <ArrowRight className="size-4 shrink-0" />
+          <Link
+            to={`/work/${next.slug}`}
+            className="btn btn-ghost h-auto max-w-[48%] py-2 text-right"
+          >
+            <span className="line-clamp-2">{next.title}</span>{' '}
+            <ArrowRight className="size-4 shrink-0" />
           </Link>
         )}
       </nav>

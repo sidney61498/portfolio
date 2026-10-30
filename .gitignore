@@ -6,3 +6,6 @@ playwright-report
 test-results
 coverage
 .DS_Store
+
+# Raw, unredacted screenshots. Never commit these; redacted copies go to src/assets/work/.
+screenshots-inbox/

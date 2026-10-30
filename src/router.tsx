@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       {
+        path: 'ai-harness',
+        lazy: async () => ({ Component: (await import('@/pages/HarnessPage')).HarnessPage }),
+      },
+      {
         path: 'work/:slug',
         lazy: async () => ({ Component: (await import('@/pages/CaseStudyPage')).CaseStudyPage }),
       },

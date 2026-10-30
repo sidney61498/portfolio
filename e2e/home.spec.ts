@@ -18,3 +18,14 @@ test('unknown pages show a 404', async ({ page }) => {
   await page.goto('/nope')
   await expect(page.getByText('This page doesn’t exist')).toBeVisible()
 })
+
+test('the AI harness has its own page, and its old case-study URL redirects there', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('link', { name: 'See the AI harness' }).click()
+  await expect(page).toHaveURL(/\/ai-harness$/)
+  await expect(page.getByRole('heading', { level: 1, name: /development harness/ })).toBeVisible()
+  await expect(page.getByRole('heading', { name: /humans at the gates/ })).toBeVisible()
+
+  await page.goto('/work/ai-dev-harness')
+  await expect(page).toHaveURL(/\/ai-harness$/)
+})

@@ -107,7 +107,11 @@ export function Hero() {
               <Sparkles className="size-4" /> See the AI harness
             </Link>
             {profile.resumeUrl && (
-              <a href={profile.resumeUrl} className="btn btn-ghost btn-lg" download>
+              <a
+                href={profile.resumeUrl}
+                className="btn btn-ghost btn-lg"
+                download={profile.resumeFileName}
+              >
                 <Download className="size-4" /> Resume
               </a>
             )}

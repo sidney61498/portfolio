@@ -65,7 +65,11 @@ export function Contact() {
           <SocialLink href={profile.links.linkedin} label="LinkedIn" icon={<LinkedinIcon />} />
           <SocialLink href={profile.links.github} label="GitHub" icon={<GithubIcon />} />
           {profile.resumeUrl && (
-            <a href={profile.resumeUrl} className="btn btn-ghost gap-2" download>
+            <a
+              href={profile.resumeUrl}
+              className="btn btn-ghost gap-2"
+              download={profile.resumeFileName}
+            >
               <Download className="size-5" /> Resume
             </a>
           )}

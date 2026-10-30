@@ -17,8 +17,9 @@ export const profile = {
     github: 'https://github.com/sidney61498',
     linkedin: 'https://www.linkedin.com/in/sidneym61498/',
   },
-  // Add a public resume PDF to /public (no phone number, no references' contacts), then set this.
-  resumeUrl: null as string | null,
+  // Public copy with the references' contact details redacted (the original stays out of git).
+  resumeUrl: '/resume.pdf' as string | null,
+  resumeFileName: 'Sidney-Medrano-Resume.pdf',
 }
 
 export const about = {

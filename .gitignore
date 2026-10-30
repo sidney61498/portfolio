@@ -10,3 +10,6 @@ coverage
 # Raw, unredacted screenshots. Never commit these; redacted copies go to src/assets/work/.
 screenshots-inbox/
 screenshots/
+
+# Original resume (contains references' contact details). The public copy is public/resume.pdf.
+src/assets/resume.pdf

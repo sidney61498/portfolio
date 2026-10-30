@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://sidneymedrano.vercel.app/sitemap.xml

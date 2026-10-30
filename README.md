@@ -1,5 +1,7 @@
 # Sidney Medrano — Portfolio
 
+**Live: https://sidneymedrano.vercel.app**
+
 Personal portfolio: Cloudstaff case studies, earlier systems, and **Tindahan POS**, a working
 point-of-sale and inventory demo that runs entirely in the browser.
 

@@ -1,5 +1,8 @@
 # Content Draft
 
+> **Superseded (2026-10-30):** the live site copy is in `src/content/*.ts`, filled in from the
+> resume. This file is the original planning draft and is no longer updated.
+
 Copy for every section, written for recruiters and hiring managers. `[brackets]` mark things only
 you can fill in. **Don't invent numbers.** If a metric isn't on your resume or cleared with
 Cloudstaff, describe it without a figure.

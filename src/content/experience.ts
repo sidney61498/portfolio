@@ -13,7 +13,7 @@ export const jobs: Job[] = [
     points: [
       'Develop and maintain StaffCentral (~7,000 users): time tracking, leave, holidays and log corrections',
       'Build HR/Operations reporting and maintain legacy CakePHP 1.3 applications',
-      'Contribute to Phoenix (Laravel + Angular): APIs, features and migration work; also React and Vue',
+      'Contribute to Phoenix (Laravel + Angular): APIs, features and migration work; also React',
       'Optimize SQL and application performance for large data sets',
       'Build n8n automations, use AI agents for coding, docs and BA/PO workflows, and automate E2E QA with Playwright',
     ],
@@ -34,7 +34,7 @@ export const jobs: Job[] = [
     period: 'Sep 2019 – Jan 2022',
     points: [
       'Built and maintained POS, inventory, payroll, document repository and COVID-19 contact tracing systems',
-      'Full-stack Laravel + Vue, with newer systems in React',
+      'Full-stack development with Laravel, Vue and MySQL',
       'Automated administrative processes; trained users and supported deployed systems',
     ],
   },

@@ -1,4 +1,4 @@
-// All homepage copy lives in src/content. Text in [brackets] is an unfilled placeholder:
+// All homepage copy lives in src/content. Text in square brackets is an unfilled placeholder:
 // it renders highlighted on the page, and `npm run placeholders` lists what is left.
 
 export const profile = {

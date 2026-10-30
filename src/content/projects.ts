@@ -28,6 +28,8 @@ export interface Project {
 
 const MMSU = 'Mariano Marcos State University'
 const BNH = 'The Black Nazarene Hospital'
+const MMSU_STACK = ['Laravel', 'Vue', 'MySQL']
+const BNH_STACK = ['Laravel', 'React']
 
 export const projects: Project[] = [
   // ---- Cloudstaff --------------------------------------------------------------------------
@@ -49,13 +51,13 @@ export const projects: Project[] = [
       role: 'Feature development and maintenance across timesheets, leave, holidays and log corrections, plus HR/Operations reporting.',
       approach: [
         'Built new request-and-approval workflows, such as a holiday calendar request flow with configurable approval routing, following the existing pages so users have nothing new to learn.',
-        'Wrote and tuned the SQL behind HR and Operations reports, reworking slow queries on large attendance tables. [Optional: before/after timing if cleared]',
+        'Wrote and tuned the SQL behind HR and Operations reports, reworking slow queries on large attendance tables.',
         'Followed a disciplined release path (feature branch → staging QA → UAT → production) with a skeptic code review before every PR.',
         'Modernized page styling one page at a time without touching business logic.',
       ],
       outcome:
-        'New policies ship without disrupting day-to-day use, and reports are fast enough for HR to rely on. [Add a cleared outcome if you have one]',
-      visuals: ['[Visual: mock holiday calendar request form + approval timeline, fake data]'],
+        'New policies ship without disrupting day-to-day use, and HR and Operations get reports they can rely on.',
+      visuals: [],
     },
   },
   {
@@ -81,8 +83,8 @@ export const projects: Project[] = [
         'Shipped in bundles through staging → UAT → production, each with a rollback plan.',
       ],
       outcome:
-        'Consumers moved onto the new API without coordinated rewrites, and the old service can be retired. [Add timing or endpoint count if cleared]',
-      visuals: ['[Visual: diagram of apps → gateway → old service vs new service during cutover]'],
+        'Ported endpoints run in production behind the same contracts, so consumers can switch without rewrites and the old service can be retired.',
+      visuals: [],
     },
   },
   {
@@ -103,8 +105,8 @@ export const projects: Project[] = [
         'Checked staging before every switch.',
         'Kept infrastructure changes to a single coordinated request at the end.',
       ],
-      outcome: 'Fewer moving parts in production and one less service to maintain. [Refine]',
-      visuals: ['[Visual: before/after service diagram]'],
+      outcome: 'Moves the platform toward fewer moving parts in production and one less service to maintain.',
+      visuals: [],
     },
   },
   {
@@ -129,8 +131,8 @@ export const projects: Project[] = [
         'A session diary that records what was done and why, so context carries across days.',
       ],
       outcome:
-        'Faster delivery on routine work, while merges into shared environments still need an explicit human go-ahead. [Add your own observation]',
-      visuals: ['[Visual: request → rules/skills → agent → reviewer → PR → human merge gate]'],
+        'Routine work such as PRs, staged deploys, ticket updates and time logs takes one command, while merges into shared environments still need an explicit human go-ahead.',
+      visuals: [],
     },
   },
   {
@@ -149,8 +151,8 @@ export const projects: Project[] = [
         'n8n workflows that automate business and development chores, including a read-only query proxy so developers can check staging and production data without direct database access.',
         'Playwright end-to-end tests for critical user flows, run before releases.',
       ],
-      outcome: 'Less manual checking and safer data access. [Add an example if you have one]',
-      visuals: ['[Visual: n8n workflow diagram with generic node names]'],
+      outcome: 'Less manual checking before releases, and data checks without handing out database credentials.',
+      visuals: [],
     },
   },
   {
@@ -171,20 +173,21 @@ export const projects: Project[] = [
         'No changes to markup logic or behaviour, so every page can ship on its own.',
       ],
       outcome: 'A consistent look across old and new pages without a risky rewrite.',
-      visuals: ['[Visual: before/after split of a mock page, fake data]'],
+      visuals: [],
     },
   },
 
   // ---- Earlier systems ---------------------------------------------------------------------
+  // Facts come from the resume only: no numbers, outcomes or features it doesn't support.
   {
     slug: 'mmsu-pos',
     title: 'Point of Sale',
     employer: MMSU,
     group: 'earlier',
     period: '2019 – 2022',
-    stack: ['Laravel', 'Vue', 'React', 'MySQL'],
+    stack: MMSU_STACK,
     summary:
-      'A point-of-sale system for [which unit: e.g. university store / canteen / press]. The live demo is a clean-room rebuild of the same idea.',
+      'A point-of-sale system I built and maintained for the university. The live demo is a clean-room rebuild of the same idea.',
     demo: { href: '/demo/pos/register', label: 'Try the POS demo' },
   },
   {
@@ -193,9 +196,9 @@ export const projects: Project[] = [
     employer: MMSU,
     group: 'earlier',
     period: '2019 – 2022',
-    stack: ['Laravel', 'Vue', 'React', 'MySQL'],
+    stack: MMSU_STACK,
     summary:
-      'Inventory tracking for [what: supplies / store goods / equipment], with stock in and out and [reports / low-stock alerts / requisitions].',
+      'Inventory tracking for the university: stock coming in and going out, so on-hand counts stay accurate.',
     demo: { href: '/demo/pos/inventory/products', label: 'Try the inventory demo' },
   },
   {
@@ -204,19 +207,21 @@ export const projects: Project[] = [
     employer: MMSU,
     group: 'earlier',
     period: '2019 – 2022',
-    stack: ['Laravel', '[Vue or React]', 'MySQL'],
-    summary: 'Payroll computation and payslips for [which staff: e.g. job-order / contractual / all employees].',
+    stack: MMSU_STACK,
+    summary: 'Payroll computation for university staff, turning a rule-heavy manual task into a repeatable process.',
     featured: true,
     page: {
-      context: '[Which staff it covered and roughly how many]',
-      problem: '[What it replaced: e.g. computing payroll in spreadsheets each cut-off]',
-      role: '[Sole developer? Backend? Full-stack?]',
+      context:
+        'An internal payroll system for Mariano Marcos State University, one of several administrative systems I built and maintained there.',
+      problem:
+        'Payroll is repetitive, rule-heavy work where a small mistake affects someone’s pay. The goal was to automate the routine computation and cut manual effort.',
+      role: 'Full-stack developer: Laravel backend, Vue frontend and MySQL database, plus user training and support after launch.',
       approach: [
-        '[Key features: attendance import? deductions? payslips? reports for accounting?]',
-        'Kept calculation rules [configurable / in code] so [rate changes] did not need a rewrite.',
+        'Turned the payroll rules into code, so every run computes pay and deductions the same way.',
+        'Trained the staff who run payroll and handled support, fixes and enhancements after go-live.',
       ],
-      outcome: '[e.g. payroll prep went from days to hours. Only if true.]',
-      visuals: ['[Visual: mock payslip and payroll summary with fictional employees]'],
+      outcome: 'Payroll computation became a repeatable, automated process instead of manual work.',
+      visuals: [],
     },
   },
   {
@@ -225,15 +230,18 @@ export const projects: Project[] = [
     employer: MMSU,
     group: 'earlier',
     period: '2019 – 2022',
-    stack: ['Laravel', '[Vue or React]', 'MySQL'],
-    summary: 'A searchable home for [which documents: memos, records, forms] across [which offices].',
+    stack: MMSU_STACK,
+    summary: 'One central, searchable place to store and find the university’s documents.',
     page: {
-      context: '[Which office(s) stored what: memos, records, forms?]',
-      problem: '[Paper files or shared drives that were hard to search?]',
-      role: '[Your role]',
-      approach: ['[Upload, categories/tags, search, access by office/role, versioning?]'],
-      outcome: '[Faster retrieval, fewer lost documents. Only if true.]',
-      visuals: ['[Visual: mock document list with filters and a detail panel, fictional files]'],
+      context: 'An internal document repository for Mariano Marcos State University.',
+      problem: 'Documents kept in scattered files are slow to find and easy to lose.',
+      role: 'Full-stack developer (Laravel, Vue, MySQL), plus user training and support.',
+      approach: [
+        'Stored documents in one place, together with the details needed to find them again.',
+        'Trained users and kept improving the system after launch.',
+      ],
+      outcome: 'One place to look for documents instead of many.',
+      visuals: [],
     },
   },
   {
@@ -242,18 +250,22 @@ export const projects: Project[] = [
     employer: MMSU,
     group: 'earlier',
     period: '2020 – 2021',
-    stack: ['Laravel', '[Vue or React]', 'MySQL'],
-    summary: 'Built during the pandemic so the university could [log campus entry / trace exposure].',
+    stack: MMSU_STACK,
+    summary:
+      'Built during the pandemic so the university could keep a record of who was on campus and trace possible exposure.',
     featured: true,
     page: {
-      context: 'Built during the pandemic so the university could [log campus entry / trace exposure].',
-      problem: '[Paper logbooks at gates were slow, unreadable, and unsafe to share?]',
-      role: '[Your role]',
+      context:
+        'Built during the COVID-19 pandemic, when the university needed a reliable record of who had been on campus.',
+      problem:
+        'Contact tracing only works if visit records are complete and can be searched quickly when someone tests positive.',
+      role: 'Full-stack developer (Laravel, Vue, MySQL), plus training and support for the staff using it.',
       approach: [
-        '[QR codes per person? Gate check-in? Exposure lookup by date and area? Health declaration form?]',
+        'Recorded campus visits in a database, so they could be searched instead of read through by hand.',
+        'Made it possible to look up who may have been in contact with a positive case.',
       ],
-      outcome: '[Used at N entry points / by N people. Only if known.]',
-      visuals: ['[Visual: mock check-in screen + trace results]'],
+      outcome: 'A searchable record of campus visits at a time when tracing speed mattered.',
+      visuals: [],
     },
   },
   {
@@ -262,16 +274,18 @@ export const projects: Project[] = [
     employer: BNH,
     group: 'earlier',
     period: '2019',
-    stack: ['Laravel', 'React', 'MySQL'],
-    summary: 'Replaced paper-based patient records for [which departments: OPD, admissions, records section].',
+    stack: BNH_STACK,
+    summary: 'Patient records management for the hospital, built in my first developer role.',
     page: {
-      context: '[Which departments used it: OPD, admissions, records section?]',
-      problem: '[Paper charts, slow retrieval, duplicate records?]',
-      role: '[Your role]',
-      approach: ['[Patient registration, visit history, search, role-based access?]'],
-      outcome:
-        'Better data management and day-to-day efficiency for hospital staff. [Add specifics if you have them]',
-      visuals: ['[Visual: record-flow diagram + one mock patient profile, fictional patient only]'],
+      context: 'The Black Nazarene Hospital needed better management of its patient records. This was my first developer role.',
+      problem: 'Patient information has to be accurate, quick to find and kept private.',
+      role: 'Developer (Laravel, React), plus IT support and system training for hospital staff.',
+      approach: [
+        'Kept patient records in one system, so staff could find a patient’s information quickly.',
+        'Trained hospital staff so the new system was actually adopted.',
+      ],
+      outcome: 'Better data management and day-to-day efficiency for hospital staff.',
+      visuals: [],
     },
   },
   {
@@ -280,9 +294,8 @@ export const projects: Project[] = [
     employer: BNH,
     group: 'earlier',
     period: '2019',
-    stack: ['Laravel', 'React', 'MySQL'],
-    summary:
-      'A survey system for [patient satisfaction / health screening], with [results reports for management].',
+    stack: BNH_STACK,
+    summary: 'A system for running the hospital’s patient surveys and keeping the responses in one place.',
   },
   {
     slug: 'bnh-inventory',
@@ -290,9 +303,9 @@ export const projects: Project[] = [
     employer: BNH,
     group: 'earlier',
     period: '2019',
-    stack: ['Laravel', 'React', 'MySQL'],
+    stack: BNH_STACK,
     summary:
-      'Inventory for [medical supplies / pharmacy / general supplies]. The stock ledger, reorder levels and stock-in ideas behind it are what the live inventory demo shows.',
+      'Inventory for the hospital’s supplies. The stock ledger, reorder levels and stock-in ideas behind it are what the live inventory demo shows.',
     demo: { href: '/demo/pos/inventory/movements', label: 'See the stock ledger demo' },
   },
   {

@@ -11,7 +11,7 @@ export const profile = {
   availability: 'Open to remote',
   email: 'sidney.medrano61498@gmail.com',
   links: {
-    github: '[GitHub profile URL]',
+    github: 'https://github.com/sidney61498',
     linkedin: '[LinkedIn profile URL]',
   },
   // Add a public resume PDF to /public (no phone number, no references' contacts), then set this.

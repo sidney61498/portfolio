@@ -10,6 +10,9 @@ export const profile = {
   location: 'Ilocos Norte, Philippines',
   availability: 'Open to remote',
   email: 'sidney.medrano61498@gmail.com',
+  /** Shown as written on the resume; `phoneHref` is the international form for tel: links. */
+  phone: '0947 870 0587',
+  phoneHref: '+639478700587',
   links: {
     github: 'https://github.com/sidney61498',
     linkedin: 'https://www.linkedin.com/in/sidneym61498/',

@@ -1,4 +1,4 @@
-import { Check, Copy, Download, Mail } from 'lucide-react'
+import { Check, Copy, Download, Mail, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { profile } from '@/content/profile'
 import { isPlaceholder } from '@/lib/placeholders'
@@ -59,6 +59,9 @@ export function Contact() {
           {copied ? 'Email copied' : ''}
         </span>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
+          <a href={`tel:${profile.phoneHref}`} className="btn btn-ghost gap-2">
+            <Phone className="size-5" /> {profile.phone}
+          </a>
           <SocialLink href={profile.links.linkedin} label="LinkedIn" icon={<LinkedinIcon />} />
           <SocialLink href={profile.links.github} label="GitHub" icon={<GithubIcon />} />
           {profile.resumeUrl && (

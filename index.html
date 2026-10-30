@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="sidney">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidney Medrano | Senior Software Engineer (Laravel, React)</title>
+    <meta
+      name="description"
+      content="Full-stack engineer with 5+ years building internal systems, APIs and automation. Case studies and a working POS + inventory demo."
+    />
+    <meta property="og:title" content="Sidney Medrano | Senior Software Engineer" />
+    <meta
+      property="og:description"
+      content="Case studies from Cloudstaff and earlier systems, plus a working POS + inventory demo."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Apply the saved theme before first paint so there is no flash.
+      try {
+        var saved = localStorage.getItem('theme')
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme = saved || (dark ? 'sidney-dark' : 'sidney')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

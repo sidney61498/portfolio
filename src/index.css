@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: 'sidney';
+  default: true;
+  color-scheme: light;
+  --color-base-100: oklch(99% 0.003 260);
+  --color-base-200: oklch(96.5% 0.006 260);
+  --color-base-300: oklch(91% 0.012 260);
+  --color-base-content: oklch(27% 0.03 260);
+  --color-primary: oklch(36% 0.06 262);
+  --color-primary-content: oklch(98% 0.005 260);
+  --color-secondary: oklch(55% 0.03 260);
+  --color-secondary-content: oklch(98% 0.005 260);
+  --color-accent: oklch(68% 0.12 195);
+  --color-accent-content: oklch(20% 0.03 200);
+  --color-neutral: oklch(30% 0.03 260);
+  --color-neutral-content: oklch(96% 0.005 260);
+  --color-info: oklch(62% 0.15 245);
+  --color-info-content: oklch(98% 0.01 245);
+  --color-success: oklch(62% 0.14 155);
+  --color-success-content: oklch(98% 0.01 155);
+  --color-warning: oklch(80% 0.15 80);
+  --color-warning-content: oklch(25% 0.05 80);
+  --color-error: oklch(58% 0.2 25);
+  --color-error-content: oklch(98% 0.01 25);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: 'sidney-dark';
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: oklch(21% 0.02 262);
+  --color-base-200: oklch(18% 0.02 262);
+  --color-base-300: oklch(27% 0.025 262);
+  --color-base-content: oklch(92% 0.01 260);
+  --color-primary: oklch(76% 0.08 262);
+  --color-primary-content: oklch(20% 0.04 262);
+  --color-secondary: oklch(70% 0.03 260);
+  --color-secondary-content: oklch(18% 0.02 260);
+  --color-accent: oklch(76% 0.12 195);
+  --color-accent-content: oklch(18% 0.03 200);
+  --color-neutral: oklch(32% 0.025 262);
+  --color-neutral-content: oklch(92% 0.01 260);
+  --color-info: oklch(72% 0.13 245);
+  --color-info-content: oklch(18% 0.03 245);
+  --color-success: oklch(72% 0.14 155);
+  --color-success-content: oklch(18% 0.03 155);
+  --color-warning: oklch(82% 0.14 80);
+  --color-warning-content: oklch(22% 0.04 80);
+  --color-error: oklch(68% 0.18 25);
+  --color-error-content: oklch(18% 0.03 25);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Poppins', 'Inter', ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+/* Unfilled content placeholders: loud on purpose so they get filled before launch. */
+.placeholder-text {
+  background: color-mix(in oklch, var(--color-warning) 30%, transparent);
+  color: inherit;
+  border-bottom: 1px dashed var(--color-warning);
+  border-radius: 0.25rem;
+  padding: 0 0.2em;
+}
+
+/* Receipt printing: only the receipt is printed, sized for 80mm paper. */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 4mm;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #receipt-print,
+  #receipt-print * {
+    visibility: visible;
+  }
+  #receipt-print {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 72mm;
+    color: #000;
+    background: #fff;
+    font-size: 11px;
+  }
+}

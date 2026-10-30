@@ -71,7 +71,7 @@ function GroupCard({ group }: { group: SkillGroup }) {
 function AiBand({ group }: { group: SkillGroup }) {
   const Icon = group.icon
   return (
-    <div className="rounded-box relative isolate overflow-hidden bg-[#0b1020] p-6 text-white sm:p-8">
+    <div className="rounded-box relative isolate overflow-hidden border border-white/10 bg-[#0b1020] p-6 text-white sm:p-8">
       <div
         aria-hidden="true"
         className="bg-accent/25 animate-aurora pointer-events-none absolute -top-24 -right-16 -z-10 size-72 rounded-full blur-3xl"

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidney Medrano – Senior Software Engineer – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root { --ink: #1c2333; --muted: #5b6475; --line: #e3e7ee; --accent: #0e9aa7; --accent-soft: #e6f6f7; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body { font-family: Inter, sans-serif; color: var(--ink); font-size: 8.4pt; line-height: 1.42; padding: 13mm 15mm 10mm; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 5mm; border-bottom: 2px solid var(--ink); }
+  h1 { font-size: 27pt; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .role { font-size: 11pt; color: var(--accent); font-weight: 600; margin-top: 2mm; }
+  .contact { text-align: right; font-size: 8pt; color: var(--muted); line-height: 1.65; }
+  .contact b { color: var(--ink); font-weight: 500; }
+  section { margin-top: 4.2mm; }
+  h2 { font-size: 7.6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 2.4mm; display: flex; align-items: center; gap: 3mm; }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .summary { font-size: 9.2pt; color: #333b4c; }
+  .job { margin-bottom: 3mm; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-weight: 600; font-size: 9.6pt; }
+  .job-title span { font-weight: 400; color: var(--muted); }
+  .date { font-size: 8pt; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  ul { list-style: none; margin-top: 1.2mm; }
+  li { position: relative; padding-left: 3.6mm; margin-bottom: 0.7mm; }
+  li::before { content: ""; position: absolute; left: 0.4mm; top: 0.62em; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--accent); }
+  .stack { margin-top: 1mm; font-size: 7.6pt; color: var(--muted); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 9mm; }
+  .skills { display: grid; grid-template-columns: 17mm 1fr; row-gap: 0.9mm; }
+  .skills dt { font-weight: 600; }
+  .skills dd { color: #333b4c; }
+  .project { background: var(--accent-soft); border-radius: 2mm; padding: 2.6mm 3.4mm; }
+  .project .job-title { font-size: 9.2pt; }
+  .small { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Sidney Medrano</h1>
+    <div class="role">Senior Software Engineer · Full-stack</div>
+  </div>
+  <div class="contact">
+    <b>sidney.medrano61498@gmail.com</b><br>
+    0947 870 0587 · Sarrat, Ilocos Norte, PH<br>
+    sidneymedrano.vercel.app<br>
+    linkedin.com/in/sidneym61498<br>github.com/sidney61498
+  </div>
+</header>
+
+<section>
+  <h2>Profile</h2>
+  <p class="summary">Full-stack software engineer with 5+ years building the internal systems companies run on: time tracking, HR workflows, APIs and the automation around them. I maintain a platform used every day by ~7,000 staff, modernize legacy code without breaking what people depend on, and use AI-assisted development with guardrails that keep releases safe. Open to remote work.</p>
+</section>
+
+<section>
+  <h2>Experience</h2>
+  <div class="job">
+    <div class="job-head"><div class="job-title">Senior Software Engineer I <span>· Cloudstaff Modern Workforce Inc.</span></div><div class="date">Jul 2022 – Present</div></div>
+    <ul>
+      <li>Develop and maintain StaffCentral (~7,000 users): time tracking, leave, holidays and log corrections on a large CakePHP 1.3 codebase.</li>
+      <li>Build request-and-approval workflows, such as holiday calendar requests with configurable approval routing, and HR/Operations reports.</li>
+      <li>Ported production endpoints from a legacy CakePHP 3 user-management service to a Laravel 12 API with exact behaviour parity, so consumer apps switched without rewrites.</li>
+      <li>Contribute to Phoenix (Laravel + Angular): APIs, features, and decommissioning a legacy integration service.</li>
+      <li>Optimize SQL queries and application performance on large attendance data sets.</li>
+      <li>Automate business and development workflows with n8n; cover critical flows with Playwright end-to-end tests.</li>
+      <li>Built an AI-assisted development harness on Claude Code: framework skills, branch and release guardrails, and a skeptic code-review agent.</li>
+    </ul>
+    <div class="stack">Laravel · CakePHP · PHP · Angular · React · Vue · jQuery · MySQL · Docker · AWS</div>
+  </div>
+  <div class="job">
+    <div class="job-head"><div class="job-title">Software Engineer I <span>· Bizmates Philippines Inc.</span></div><div class="date">Jan 2022 – Jul 2022</div></div>
+    <ul>
+      <li>Converted PDF lesson material into structured, reusable HTML/CSS for a web-based classroom platform.</li>
+      <li>Built frontend features in Nuxt.js with a Laravel backend, keeping lessons responsive and consistent across devices.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><div class="job-title">Computer Programmer I <span>· Mariano Marcos State University</span></div><div class="date">Sep 2019 – Jan 2022</div></div>
+    <ul>
+      <li>Built and maintained internal systems: POS, inventory, payroll, document repository and COVID-19 contact tracing.</li>
+      <li>Full-stack Laravel and Vue with MySQL, with newer systems in React; automated administrative processes.</li>
+      <li>Trained users and provided support, fixes and enhancements for deployed systems.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><div class="job-title">IT Staff <span>· The Black Nazarene Hospital, Inc.</span></div><div class="date">Mar 2019 – Sep 2019</div></div>
+    <ul>
+      <li>Built systems for patient records, surveys and inventory (Laravel, React); provided IT support and system training for staff.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Selected project</h2>
+  <div class="project">
+    <div class="job-head"><div class="job-title">POS Inventory Platform <span>· personal project</span></div><div class="date">2026</div></div>
+    <p style="margin-top:1mm">A multi-branch POS and inventory platform: an 85-endpoint Laravel 13 API serving a web back office, an offline-first Electron desktop app and a React Native mobile app. Live demo at sidneymedrano.vercel.app.</p>
+  </div>
+</section>
+
+<section class="grid2">
+  <div>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Backend</dt><dd>Laravel, CakePHP 1.3 / 3.x, PHP, REST APIs, Auth</dd>
+      <dt>Frontend</dt><dd>React, Vue, Angular, Nuxt, jQuery, Tailwind, Bootstrap</dd>
+      <dt>Data</dt><dd>MySQL, query optimization, reporting</dd>
+      <dt>DevOps</dt><dd>Docker, AWS, Git, GitHub Actions, n8n</dd>
+      <dt>Quality</dt><dd>Playwright E2E, code review, staged releases</dd>
+      <dt>AI</dt><dd>Claude Code, GitHub Copilot, custom agents</dd>
+    </dl>
+  </div>
+  <div>
+    <h2>Education</h2>
+    <div class="job-title">BS Computer Science <span>· cum laude</span></div>
+    <div class="small">Mariano Marcos State University · 2014 – 2018</div>
+    <h2 style="margin-top:4mm">Trainings</h2>
+    <div>Visual Graphics Design NC III · GitHub Training · AWS Training</div>
+    <h2 style="margin-top:4mm">References</h2>
+    <div class="small">Available upon request.</div>
+  </div>
+</section>
+</body>
+</html>

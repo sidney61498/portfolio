@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidney Medrano – Senior Software Engineer – Resume</title>
+<style>
+  /* Static (non-variable) font files so Chrome embeds real TrueType text, not Type 3 glyphs. */
+  @font-face { font-family: Jakarta; font-weight: 400; src: url(fonts/plus-jakarta-sans-latin-400-normal.woff2) format("woff2"); }
+  @font-face { font-family: Jakarta; font-weight: 500; src: url(fonts/plus-jakarta-sans-latin-500-normal.woff2) format("woff2"); }
+  @font-face { font-family: Jakarta; font-weight: 600; src: url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format("woff2"); }
+  @font-face { font-family: Jakarta; font-weight: 700; src: url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format("woff2"); }
+  @font-face { font-family: Jakarta; font-weight: 800; src: url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format("woff2"); }
+
+  @page { size: A4; margin: 0; }
+  :root {
+    --navy: #1b2640; --navy-2: #26355a; --navy-3: #31426b; --side-text: #dbe2ef; --side-muted: #95a3bf;
+    --ink: #1a2132; --body: #39435a; --muted: #5f6880; --line: #e3e7ef;
+    --accent: #23b2bf; --accent-ink: #0a7c87; --accent-soft: #e4f6f8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  /* Main column comes first in the source so parsers read name and experience first;
+     the grid puts the sidebar on the left visually. */
+  body { font-family: Jakarta, sans-serif; color: var(--ink); font-size: 8.3pt; line-height: 1.45;
+    display: grid; grid-template-columns: 66mm 1fr; grid-template-areas: "side main"; }
+  a { color: inherit; text-decoration: none; }
+  b { font-weight: 700; color: var(--ink); }
+
+  /* ---- Sidebar ---- */
+  aside { grid-area: side; background: var(--navy); color: var(--side-text); padding: 12mm 7mm 9mm 9mm; position: relative; }
+  aside::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1.2mm; background: var(--accent); }
+  .photo { width: 33mm; height: 33mm; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 5mm; border: 1.2mm solid var(--navy-2); box-shadow: 0 0 0 0.5mm var(--accent); }
+  aside h3 { font-size: 7.4pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 5.4mm 0 2.4mm; font-weight: 800; display: flex; align-items: center; gap: 2mm; }
+  aside h3::after { content: ""; flex: 1; height: 0.3mm; background: var(--navy-3); }
+
+  .glance { display: grid; gap: 1.4mm; }
+  .g { background: var(--navy-2); border-radius: 1.8mm; padding: 1.8mm 2.6mm; display: flex; align-items: baseline; gap: 2.2mm; }
+  .g .v { font-size: 11pt; font-weight: 800; color: #fff; white-space: nowrap; }
+  .g .l { font-size: 7pt; color: var(--side-muted); line-height: 1.3; }
+  .g.hl { background: var(--accent); }
+  .g.hl .v { color: #062a2e; }
+  .g.hl .l { color: #0b3d42; font-weight: 600; }
+
+  .contact { list-style: none; }
+  .contact li { display: flex; gap: 2.2mm; align-items: center; margin-bottom: 1.5mm; color: #fff; font-weight: 500; font-size: 7.8pt; }
+  .contact svg { width: 3.2mm; height: 3.2mm; flex: none; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .sk-label { font-size: 7pt; color: var(--side-muted); margin-bottom: 1mm; font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-bottom: 2.2mm; }
+  .chip { background: var(--navy-2); color: #eef2f8; border-radius: 10mm; padding: 0.4mm 2.2mm; font-size: 7.3pt; }
+  .chip.core { background: var(--accent); color: #062a2e; font-weight: 700; }
+  .side-list { list-style: none; }
+  .side-list li { margin-bottom: 0.8mm; padding-left: 3mm; position: relative; }
+  .side-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 1.2mm; height: 1.2mm; border-radius: 50%; background: var(--accent); }
+
+  /* ---- Main ---- */
+  main { grid-area: main; padding: 12mm 12mm 0 10mm; display: flex; flex-direction: column; font-size: 8.6pt; }
+  h1 { font-size: 28pt; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--navy); }
+  .role { margin-top: 2mm; font-size: 11.5pt; font-weight: 700; color: var(--accent-ink); }
+  .stackline { margin-top: 0.8mm; font-size: 8pt; color: var(--muted); font-weight: 500; }
+  .summary { margin-top: 3.6mm; font-size: 8.8pt; color: var(--body); padding: 2.6mm 3.4mm; background: var(--accent-soft); border-radius: 2mm; }
+  h2 { font-size: 11pt; font-weight: 800; color: var(--navy); margin: 5.6mm 0 3mm; display: flex; align-items: center; gap: 2.5mm; }
+  h2::before { content: ""; width: 5mm; height: 1.2mm; border-radius: 1mm; background: var(--accent); }
+
+  .timeline { position: relative; padding-left: 5mm; }
+  .timeline::before { content: ""; position: absolute; left: 1.1mm; top: 1.5mm; bottom: 1.5mm; width: 0.4mm; background: var(--line); }
+  .job { position: relative; margin-bottom: 3.6mm; }
+  .job:last-child { margin-bottom: 0; }
+  .job::before { content: ""; position: absolute; left: -5mm; top: 1.1mm; width: 2.6mm; height: 2.6mm; border-radius: 50%; background: #fff; border: 0.7mm solid var(--accent); }
+  .job.current::before { background: var(--accent); box-shadow: 0 0 0 0.7mm var(--accent-soft); }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+  .company { font-weight: 800; font-size: 9.4pt; }
+  .date { font-size: 7.6pt; color: var(--accent-ink); font-weight: 700; white-space: nowrap; }
+  .title { color: var(--muted); font-weight: 600; }
+
+  /* Cloudstaff: stacked roles */
+  .roles { margin: 1.2mm 0 0.4mm; border-left: 0.5mm solid var(--accent-soft); padding-left: 2.6mm; }
+  .r { display: flex; justify-content: space-between; align-items: center; padding: 0.3mm 0; }
+  .r .title { display: flex; align-items: center; gap: 1.6mm; }
+  .r.now .title { color: var(--ink); font-weight: 700; }
+  .r .d { font-size: 7.4pt; color: var(--muted); font-weight: 500; white-space: nowrap; }
+  .pill { font-size: 6.3pt; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); border-radius: 1mm; padding: 0.2mm 1.4mm; }
+
+  main ul { margin: 1.2mm 0 0 3.4mm; color: var(--body); }
+  main li { margin-bottom: 0.55mm; padding-left: 0.6mm; }
+  main li::marker { color: var(--accent); }
+
+  .project { border: 0.3mm solid var(--line); border-left: 1.2mm solid var(--accent); border-radius: 1.5mm; padding: 2.4mm 3.2mm; color: var(--body); }
+  .project .company { color: var(--ink); }
+  .project a { color: var(--accent-ink); font-weight: 700; }
+  .edu-side { color: var(--side-text); }
+  .edu-side b { color: #fff; }
+  .edu-side span { color: var(--side-muted); }
+
+  footer { margin-top: auto; padding: 2.4mm 0 7mm; border-top: 0.3mm solid var(--line); display: flex; justify-content: space-between; font-size: 7.3pt; color: var(--muted); }
+  footer a { color: var(--accent-ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Sidney Medrano</h1>
+  <div class="role">Senior Software Engineer</div>
+  <div class="stackline">Full-stack · Laravel · React · Vue · Angular · AI-assisted development</div>
+  <p class="summary">Full-stack engineer with 7+ years building the internal systems companies run on: time tracking, HR workflows, APIs and the automation around them. I maintain a platform ~7,000 staff use every day, modernize legacy code without breaking what people rely on, and use AI agents with guardrails that keep releases safe.</p>
+
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="job current">
+      <div class="job-head"><div class="company">Cloudstaff Modern Workforce Inc.</div><div class="date">Jul 2022 – Present</div></div>
+      <div class="roles">
+        <div class="r now"><div class="title">Senior Software Engineer I <span class="pill">Promoted</span></div><div class="d">Apr 2026 – Present</div></div>
+        <div class="r"><div class="title">Software Engineer II</div><div class="d">Jul 2022 – Mar 2026</div></div>
+      </div>
+      <ul>
+        <li>Develop and maintain <b>StaffCentral (~7,000 users)</b>: time tracking, leave, holidays and log corrections on CakePHP 1.3.</li>
+        <li>Build <b>request-and-approval workflows</b> with configurable routing, plus HR/Operations reports.</li>
+        <li>Ported production endpoints from a legacy CakePHP 3 service to a <b>Laravel 12 API</b> with exact behaviour parity, so consumer apps switched without rewrites.</li>
+        <li>Contribute to <b>Phoenix (Laravel + Angular)</b>: APIs, features and decommissioning a legacy integration service.</li>
+        <li><b>Optimize SQL</b> and application performance on large attendance data sets.</li>
+        <li>Automate workflows with <b>n8n</b>; cover critical flows with <b>Playwright</b> E2E tests.</li>
+        <li>Built an <b>AI-assisted dev harness</b> on Claude Code with release guardrails and a skeptic review agent.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><div class="company">Bizmates Philippines Inc.</div><div class="date">Jan 2022 – Jul 2022</div></div>
+      <div class="title">Software Engineer I</div>
+      <ul>
+        <li>Converted PDF lessons into reusable HTML/CSS for a web classroom platform.</li>
+        <li>Built <b>Nuxt.js</b> frontend features on a <b>Laravel</b> backend, responsive across devices.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><div class="company">Mariano Marcos State University</div><div class="date">Sep 2019 – Jan 2022</div></div>
+      <div class="title">Computer Programmer I</div>
+      <ul>
+        <li>Built <b>POS, inventory, payroll, document repository</b> and <b>COVID-19 contact tracing</b> systems.</li>
+        <li>Full-stack Laravel + Vue with MySQL, newer systems in React; trained and supported users.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head"><div class="company">The Black Nazarene Hospital, Inc.</div><div class="date">Mar 2019 – Sep 2019</div></div>
+      <div class="title">IT Staff</div>
+      <ul>
+        <li>Built patient records, survey and inventory systems (Laravel, React); trained hospital staff.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Selected project</h2>
+  <div class="project">
+    <div class="job-head"><div class="company">POS Inventory Platform</div><div class="date">2026 · personal</div></div>
+    <div style="margin-top:0.8mm">An 85-endpoint Laravel 13 API serving a web back office, an offline-first Electron desktop app and a React Native mobile app. <a href="https://sidneymedrano.vercel.app/projects/pos-platform">Live demo</a></div>
+  </div>
+
+  <footer>
+    <span>Case studies and live demo: <a href="https://sidneymedrano.vercel.app">sidneymedrano.vercel.app</a></span>
+    <span>References available upon request</span>
+  </footer>
+</main>
+
+<aside>
+  <img class="photo" src="sidney.webp" alt="Sidney Medrano">
+
+  <h3>At a glance</h3>
+  <div class="glance">
+    <div class="g"><span class="v">7+ yrs</span><span class="l">building production web apps</span></div>
+    <div class="g"><span class="v">~7,000</span><span class="l">staff on the system I maintain</span></div>
+    <div class="g hl"><span class="v">Apr 2026</span><span class="l">promoted to Senior Software Engineer I</span></div>
+  </div>
+
+  <h3>Contact</h3>
+  <ul class="contact">
+    <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:sidney.medrano61498@gmail.com">sidney.medrano61498@gmail.com</a></li>
+    <li><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><a href="tel:+639478700587">0947 870 0587</a></li>
+    <li><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Sarrat, Ilocos Norte · Remote</li>
+    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><a href="https://sidneymedrano.vercel.app">sidneymedrano.vercel.app</a></li>
+    <li><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7"/></svg><a href="https://www.linkedin.com/in/sidneym61498/">linkedin.com/in/sidneym61498</a></li>
+    <li><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.7 16 2.5a13.4 13.4 0 0 0-7 0C6.3.7 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></svg><a href="https://github.com/sidney61498">github.com/sidney61498</a></li>
+  </ul>
+
+  <h3>Skills</h3>
+  <div class="sk-label">Core stack</div>
+  <div class="chips"><span class="chip core">Laravel</span><span class="chip core">CakePHP</span><span class="chip core">React</span><span class="chip core">Vue</span><span class="chip core">Angular</span><span class="chip core">MySQL</span></div>
+  <div class="sk-label">Backend &amp; frontend</div>
+  <div class="chips"><span class="chip">PHP</span><span class="chip">REST APIs</span><span class="chip">Authentication</span><span class="chip">Query tuning</span><span class="chip">Nuxt</span><span class="chip">jQuery</span><span class="chip">Tailwind CSS</span><span class="chip">Bootstrap</span></div>
+  <div class="sk-label">DevOps &amp; QA</div>
+  <div class="chips"><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">GitHub Actions</span><span class="chip">n8n</span><span class="chip">Playwright</span><span class="chip">Code review</span></div>
+  <div class="sk-label">AI-assisted dev</div>
+  <div class="chips"><span class="chip">Claude Code</span><span class="chip">GitHub Copilot</span><span class="chip">Custom agents</span></div>
+
+  <h3>Education</h3>
+  <div class="edu-side"><b>BS Computer Science</b><br>Cum laude · Mariano Marcos State University<br><span>2014 – 2018</span></div>
+
+  <h3>Trainings</h3>
+  <ul class="side-list"><li>Visual Graphics Design NC III</li><li>GitHub Training</li><li>AWS Training</li></ul>
+</aside>
+</body>
+</html>

@@ -2,6 +2,8 @@ export interface Job {
   company: string
   role: string
   period: string
+  /** Set when `role` was reached by promotion within the same company. */
+  promotion?: { on: string; from: string; fromPeriod: string }
   /** From the resume. */
   stack: string[]
   points: string[]
@@ -12,6 +14,7 @@ export const jobs: Job[] = [
     company: 'Cloudstaff Modern Workforce Inc.',
     role: 'Senior Software Engineer I',
     period: 'Jul 2022 – Present',
+    promotion: { on: 'Apr 2026', from: 'Software Engineer II', fromPeriod: 'Jul 2022 – Mar 2026' },
     stack: ['Laravel', 'CakePHP', 'React', 'Angular', 'Vue', 'jQuery', 'MySQL'],
     points: [
       'Develop and maintain StaffCentral (~7,000 users): time tracking, leave, holidays and log corrections',

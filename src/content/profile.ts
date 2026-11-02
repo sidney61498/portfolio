@@ -6,7 +6,7 @@ export const profile = {
   title: 'Senior Software Engineer',
   stackLine: 'Laravel · React · Vue · Angular',
   pitch:
-    'I build and maintain the internal systems companies run on: time tracking, HR workflows, APIs and the automation around them. Five-plus years, most of it on software real people use every day.',
+    'I build and maintain the internal systems companies run on: time tracking, HR workflows, APIs and the automation around them. Seven-plus years, most of it on software real people use every day.',
   location: 'Ilocos Norte, Philippines',
   availability: 'Open to remote',
   email: 'sidney.medrano61498@gmail.com',
@@ -29,7 +29,7 @@ export const about = {
     'These days I also spend time on AI-assisted development: building guardrails and automation so AI agents help with coding, review and documentation without cutting corners.',
   ],
   facts: [
-    { label: 'Years building production web apps', value: '5+' },
+    { label: 'Years building production web apps', value: '7+' },
     { label: 'Staff using the system I maintain', value: '~7,000' },
     { label: 'BS Computer Science, MMSU', value: 'Cum laude' },
   ],

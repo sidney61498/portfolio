@@ -25,8 +25,21 @@ function JobCard({ job, current }: { job: Job; current: boolean }) {
           <Period job={job} current={current} />
         </div>
         <div>
-          <h3 className="text-lg leading-tight font-semibold">{job.role}</h3>
+          <h3 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg leading-tight font-semibold">
+            {job.role}
+            {job.promotion && (
+              <span className="badge badge-accent badge-soft badge-sm">
+                Promoted {job.promotion.on}
+              </span>
+            )}
+          </h3>
           <p className="text-accent font-medium">{job.company}</p>
+          {job.promotion && (
+            <p className="text-base-content/60 mt-1 text-sm">
+              Previously {job.promotion.from} ·{' '}
+              <span className="whitespace-nowrap">{job.promotion.fromPeriod}</span>
+            </p>
+          )}
         </div>
         <ul className="text-base-content/80 list-disc space-y-1.5 pl-5">
           {job.points.map((pt) => (
